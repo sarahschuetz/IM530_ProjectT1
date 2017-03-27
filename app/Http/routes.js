@@ -17,4 +17,6 @@
 
 const Route = use('Route')
 
+Route.any('/api/cats', 'TestController.getCats')
+Route.any('/api', 'TestController.test')
 Route.any('*', 'NuxtController.render')
