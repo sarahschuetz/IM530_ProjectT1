@@ -1,7 +1,7 @@
 {
   "name": "adonuxt",
-  "version": "1.0.0",
-  "author": "",
+  "version": "0.0.1",
+  "author": "Sarah Sauseng & Sarah Schütz",
   "description": "",
   "license": "MIT",
   "private": true,
@@ -22,10 +22,14 @@
     "adonis-framework": "^3.0.9",
     "adonis-lucid": "^3.0.13",
     "adonis-middleware": "^1.0.10",
+    "adonis-mongoose": "0.0.1",
     "adonis-websocket": "^1.0.2",
     "cross-env": "^3.1.4",
+    "gulp-util": "^3.0.8",
     "nuxt": "latest",
     "standard": "^8.6.0",
+    "vinyl-named": "^1.1.0",
+    "yargs": "^7.0.2",
     "youch": "^2.0.4"
   },
   "standard": {
@@ -39,11 +43,16 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
+    "browser-sync": "^2.18.8",
     "eslint": "^3.13.1",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-html": "^2.0.0",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-uglify": "^2.1.2",
     "nodemon": "^1.11.0",
     "standard": "^8.6.0"
   }
