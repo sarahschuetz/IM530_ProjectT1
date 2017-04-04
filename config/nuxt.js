@@ -7,7 +7,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'Adonuxt',
+    title: 'purr, purr, purr!',
     meta: [
       {
         charset: 'utf-8'
@@ -15,11 +15,6 @@ module.exports = {
       {
         name: 'viewport',
         content: 'width=device-width, initial-scale=1'
-      },
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Adonuxt project'
       }
     ],
     link: [
@@ -27,13 +22,17 @@ module.exports = {
         rel: 'icon',
         type: 'image/x-icon',
         href: 'favicon.ico'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Open+Sans'
       }
     ]
   },
   /*
   ** Global CSS
   */
-  css: ['~assets/css/main.css'],
+  css: ['~static/main.css'],
   /*
   ** Customize the progress-bar color
   */

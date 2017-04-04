@@ -1,7 +1,7 @@
 <template>
-    <section>
-        <h1>WELCOME HOME!</h1>
-    </section>
+    <div class="background">
+        <h1>purr, purr, purr!</h1>
+    </div>
 </template>
 
 // --------------------------------------------------
@@ -17,5 +17,16 @@
 // --------------------------------------------------
 
 <style lang="scss" scoped>
+
+    .background {
+        background-color: #0f0;
+        width: 100vw;
+        height: 100vh;
+        
+    }
+
+    h1 {
+        
+    }
 
 </style>
