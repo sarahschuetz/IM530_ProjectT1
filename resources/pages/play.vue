@@ -1,26 +1,21 @@
 <template>
-    <div>
-        <navigation/>
-        <nuxt/>
-    </div>
+    <section>
+        <h1>Play!</h1>
+    </section>
 </template>
 
 // --------------------------------------------------
 
 <script>
 
-    import Navigation from '~components/Navigation.vue'
-
     export default {
-        components: {
-            Navigation
-        }
+        layout: 'chat',
     }
 
 </script>
 
 // --------------------------------------------------
 
-<style lang="sass">
+<style lang="scss" scoped>
 
 </style>

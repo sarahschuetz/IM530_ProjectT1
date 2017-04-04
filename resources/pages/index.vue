@@ -1,12 +1,16 @@
 <template>
     <section>
-        <h1>Play!</h1>
+        <h1>WELCOME HOME!</h1>
     </section>
 </template>
 
 // --------------------------------------------------
 
 <script>
+
+    export default {
+        layout: 'home',
+    }
 
 </script>
 

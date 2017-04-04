@@ -4,7 +4,7 @@
             <li><nuxt-link to="/contact">contact us</nuxt-link></li>
             <li><nuxt-link to="/statistics">statistics</nuxt-link></li>
             <li><nuxt-link to="/rules">rules</nuxt-link></li>
-            <li><nuxt-link to="/">play</nuxt-link></li>
+            <li><nuxt-link to="/play">play</nuxt-link></li>
         </ul>
     </nav>
 </template>
