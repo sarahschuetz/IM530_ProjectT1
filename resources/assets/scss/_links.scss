@@ -1,7 +1,7 @@
 a {
+    text-decoration: none !important;
 
+    &:hover, &:focus, &:visited {
+        color: #744d82;
+    }
 } 
-
-:hover, a:focus, a:visited {
-    color: #744d82;
-}

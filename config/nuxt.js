@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Open+Sans'
+        href: 'https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Open+Sans:300,400,600,700'
       }
     ]
   },
@@ -36,7 +36,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#744d82' },
+  loading: { color: '#ffafbd' },
   /*
   ** Point to resources
   */

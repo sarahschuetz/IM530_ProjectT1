@@ -1,0 +1,41 @@
+.btn {
+    padding: 8px 42px;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 16px;
+    font-weight: 600;
+    outline: 0;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.border-pink {
+        background-color: transparent; 
+        border: 2px solid $pink;
+        color: $pink;
+        position: relative;
+        z-index: 1;
+        transition: 0.08s ease-in;
+
+        &:hover {
+            color: $white;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            background: $pink;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 100%;
+            z-index: -1;
+            transition: right 0.09s ease-in;
+        }
+
+        &:hover:before {
+            right: 0;
+        }
+    }
+
+}
