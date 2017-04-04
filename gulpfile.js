@@ -33,6 +33,7 @@ gulp.task('img', function() {
 
 gulp.task('watch', function() {
     gulp.watch('resources/assets/scss/**/*.scss', ['scss']);
+    gulp.watch('resources/assets/img/**/*', ['img']);
 });
 
 gulp.task('serve', function() {
