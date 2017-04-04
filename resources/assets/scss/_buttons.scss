@@ -19,6 +19,7 @@
 
         &:hover {
             color: $white;
+            cursor: pointer;
         }
 
         &:before {
@@ -35,6 +36,7 @@
 
         &:hover:before {
             right: 0;
+            cursor: pointer;
         }
     }
 
