@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1>Play!</h1>
+        <h1>Statistics</h1>
     </section>
 </template>
 

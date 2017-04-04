@@ -1,19 +1,6 @@
 'use strict'
 
-const Env = use('Env')
-const Config = use('Config')
-const Nuxt = require('nuxt')
-
-class NuxtController {
-
-  constructor () {
-    let config = Config.get('nuxt')
-    config.dev = Env.get('NODE_ENV') === 'development'
-    this.nuxt = new Nuxt(config)
-    if (Env.get('NODE_ENV') === 'development') {
-      this.nuxt.build()
-    }
-  }
+class TestController {
 
   * test (request, response) {
     const data = {test: 'Hallo Sarah'};
@@ -37,4 +24,4 @@ class NuxtController {
   }
 }
 
-module.exports = new NuxtController()
+module.exports = new TestController()

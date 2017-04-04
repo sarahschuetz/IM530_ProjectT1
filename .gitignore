@@ -27,3 +27,5 @@ lib-cov
 
 # Nuxt.js
 .nuxt/
+
+resources/static

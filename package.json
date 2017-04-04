@@ -25,10 +25,15 @@
     "adonis-mongoose": "0.0.1",
     "adonis-websocket": "^1.0.2",
     "cross-env": "^3.1.4",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
     "gulp-util": "^3.0.8",
     "nuxt": "latest",
-    "standard": "^8.6.0",
     "vinyl-named": "^1.1.0",
+    "vue-loader": "^11.3.4",
+    "webpack": "^2.3.3",
+    "webpack-stream": "^3.2.0",
     "yargs": "^7.0.2",
     "youch": "^2.0.4"
   },
@@ -53,7 +58,9 @@
     "gulp-autoprefixer": "^3.1.1",
     "gulp-cssmin": "^0.1.7",
     "gulp-uglify": "^2.1.2",
+    "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
+    "sass-loader": "^6.0.3",
     "standard": "^8.6.0"
   }
 }
