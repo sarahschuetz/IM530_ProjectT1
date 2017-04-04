@@ -30,8 +30,7 @@
 
 <style lang="scss" scoped>
 
-    .background {
-        background-image: url('/img/background.jpg');
+    .background { 
         width: 100vw;
         height: 100vh;
 

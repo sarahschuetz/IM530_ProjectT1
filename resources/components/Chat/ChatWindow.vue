@@ -16,10 +16,13 @@
 
     .chat-window {
         width: 300px;
-        height: 100%;
+        height: 320px;
         float: right;
         background-color: #0f0;
-        margin-left: 20px;
+        margin-right: 20px;
+        position: fixed;
+        bottom: 0;
+        right: 100px;
     }    
 
 </style>

@@ -1,6 +1,7 @@
 <template>
     <section>
-        <h1>Play!</h1>
+        <h1>Welcome home, Sarah!</h1>
+        <p>You are a student at FH Hagenberg.</p>
     </section>
 </template>
 

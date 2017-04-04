@@ -1,7 +1,10 @@
 <template>
     <div>
+        <logo/>
         <navigation/>
-        <nuxt/>
+        <main>
+            <nuxt/>
+        </main>
     </div>
 </template>
 
@@ -10,10 +13,12 @@
 <script>
 
     import Navigation from '~components/Navigation.vue'
+    import Logo from '~components/Logo.vue'
 
     export default {
         components: {
-            Navigation
+            Navigation,
+            Logo
         }
     }
 

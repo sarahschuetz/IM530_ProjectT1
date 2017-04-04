@@ -1,8 +1,6 @@
 <template>
-    <div class="chat">
-        <chat-window></chat-window>
-        <chat-window></chat-window>
-        <chat-window></chat-window>
+    <div class="chat-bar">
+        <logo/>
     </div>
 </template>
 
@@ -10,11 +8,11 @@
 
 <script>
 
-    import ChatWindow from '~components/Chat/ChatWindow.vue'
+    import Logo from '~components/Logo.vue'
 
     export default {
         components: {
-            ChatWindow
+            Logo
         }
     }
     
@@ -24,11 +22,20 @@
 
 <style lang="scss" scoped>
 
-    .chat {
-        width: 100%;
-        height: 320px;
+    @import '~assets/scss/variables';
+
+    .chat-bar {
+        width: 100px;
+        height: 100%;
+        background-color: $white;
         position: fixed;
-        bottom: 0;
+        top: 0;
+        right: 0;
+        
+        logo {
+            position: absolute;
+        }
     }
+
 
 </style>

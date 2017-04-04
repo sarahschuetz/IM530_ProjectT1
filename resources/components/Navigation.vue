@@ -19,7 +19,12 @@
 
 <style lang="scss" scoped>
 
+    @import '~assets/scss/variables';
+
     nav {
+        padding-right: 100px;
+        padding-top: 20px;
+
         ul {
             li {
                 padding: 10px 20px;
@@ -28,6 +33,7 @@
 
                 a {
                   text-decoration: none;
+                  color: $black;
                 }
             }
         }

@@ -13,10 +13,25 @@ html, body {
     padding: 0;
 }
 
+body {
+    background-image: url('/img/background.jpg');
+}
+
 .page-enter-active, .page-leave-active {
-  transition: opacity .5s
+    transition: opacity .5s
 }
 
 .page-enter, .page-leave-active {
-  opacity: 0
+    opacity: 0
+}
+
+main {
+    display: block;
+    width: 750px;
+    min-height: 200px;
+    padding: 10px;
+    padding-right: 100px;
+    background-color: $white;
+    margin: 116px auto 0;
+
 }

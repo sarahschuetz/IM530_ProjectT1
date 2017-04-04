@@ -1,8 +1,11 @@
 <template>
     <div>
         <navigation/>
-        <nuxt/>
+        <main>
+            <nuxt/>
+        </main>
         <chat-bar/>
+        <chat-window/>
     </div>
 </template>
 
@@ -12,10 +15,12 @@
 
     import Navigation from '~components/Navigation.vue'
     import ChatBar from '~components/Chat/ChatBar.vue'
+    import ChatWindow from '~components/Chat/ChatWindow.vue'
 
     export default {
         components: {
             Navigation,
+            ChatWindow,
             ChatBar
         }
     }
