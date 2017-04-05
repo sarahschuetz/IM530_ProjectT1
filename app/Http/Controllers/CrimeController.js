@@ -1,5 +1,7 @@
 'use strict'
 
+let Crime = use('App/Model/Crime')
+
 class CrimeController {
 
     constructor () {
@@ -8,19 +10,31 @@ class CrimeController {
 
     * getAll (request, response) {
 
-        // TODO: load from db
-        response.json({'crimes' : 'crimes'});
+        let crimes = yield Crime.find(function (err) {
+            if (err) return console.error(err)
+        })
+
+        response.json(crimes)
     }
 
     * get (request, response) {
-        // TODO: load from db
-        const id = request.param('id')
-        response.json({'crime' : id})
+
+        let id = request.param('id')
+        let crime = yield Crime.findById({ _id: id }, function(err) {
+            if (err) return console.error(err)
+        })
+
+        response.json(crime)
     }
 
     * getRandom (request, response) {
-        // TODO: load random crime from db
-        response.json()
+
+        yield Crime.findOneRandom(function (err, results) {
+            if (err) return console.error(err)
+            if (results) {
+                response.json(results)
+            }
+        })
     }
 
 }

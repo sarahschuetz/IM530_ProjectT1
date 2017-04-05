@@ -21,7 +21,7 @@ class CatController {
         let id = request.param('id')
         let cat = yield Cat.findById({ _id: id }, function(err) {
             if (err) return console.error(err)
-        });
+        })
 
         response.json(cat)
     }

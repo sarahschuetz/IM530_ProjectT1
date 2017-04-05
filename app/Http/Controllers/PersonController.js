@@ -1,5 +1,7 @@
 'use strict'
 
+let Person = use('App/Model/Person')
+
 class PersonController {
 
     constructor () {
@@ -8,19 +10,31 @@ class PersonController {
 
     * getAll (request, response) {
 
-        // TODO: load from db
-        response.json({'people' : 'persons'});
+        let people = yield Person.find(function (err) {
+            if (err) return console.error(err)
+        })
+
+        response.json(people)
     }
 
     * get (request, response) {
-        // TODO: load from db
-        const id = request.param('id')
-        response.json({'person' : id})
+
+        let id = request.param('id')
+        let person = yield Person.findById({ _id: id }, function(err) {
+            if (err) return console.error(err)
+        })
+
+        response.json(person)
     }
 
     * getRandom (request, response) {
-        // TODO: load random person from db
-        response.json()
+
+        yield Person.findOneRandom(function (err, results) {
+            if (err) return console.error(err)
+            if (results) {
+                response.json(results)
+            }
+        })
     }
 
 }

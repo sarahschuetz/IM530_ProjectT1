@@ -1,5 +1,7 @@
 'use strict'
 
+let Room = use('App/Model/Room')
+
 class RoomController {
 
     constructor () {
@@ -8,16 +10,21 @@ class RoomController {
 
     * getAll (request, response) {
 
-        // TODO: load from db
+        let rooms = yield Room.find(function (err) {
+            if (err) return console.error(err)
+        })
 
-        response.json({'rooms' : 'room'});
+        response.json(rooms)
     }
 
     * get (request, response) {
 
-        // TODO: load from db
-        const id = request.param('id')
-        response.json({'room' : id})
+        let id = request.param('id')
+        let room = yield Room.findById({ _id: id }, function(err) {
+            if (err) return console.error(err)
+        })
+
+        response.json(room)
     }
 
 }
