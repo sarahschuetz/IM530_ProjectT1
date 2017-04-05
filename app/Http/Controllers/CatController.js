@@ -11,9 +11,8 @@ class CatController {
 
         let cats = yield Cat.find(function (err) {
             if (err) return console.error(err);
+            response.json(cats);
         });
-
-        response.json(cats);
     }
 
     * get (request, response) {
@@ -21,9 +20,8 @@ class CatController {
         let id = request.param('id')
         let cat = yield Cat.findById({ _id: id }, function(err) {
             if (err) return console.error(err);
+            response.json(cat);
         });
-
-        response.json(cat)
     }
 
     * getRandom (request, response) {
@@ -32,9 +30,8 @@ class CatController {
 
         let cats = yield Cat.find(function (err) {
             if (err) return console.error(err);
+            response.json();
         });
-
-        response.json()
     }
 
 }
