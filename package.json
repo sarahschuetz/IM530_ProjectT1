@@ -29,6 +29,7 @@
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-util": "^3.0.8",
+    "mongoose-simple-random": "^0.4.1",
     "nuxt": "latest",
     "vinyl-named": "^1.1.0",
     "vue-loader": "^11.3.4",
