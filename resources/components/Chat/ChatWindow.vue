@@ -1,6 +1,22 @@
 <template>
     <div class="chat-window">
-       
+        <div class="name-bar">
+            <div class="img"></div>
+            <div class="text">
+                Buttercup
+                <i class="material-icons close-icon">&#xE5CD;</i>
+            </div>
+        </div>
+        <div class="messages">
+            <cat-message/>
+            <user-message/>
+            <user-message/>
+            <cat-message/>
+            <user-message/>
+            <cat-message/>
+            <cat-message/>
+        </div>
+        <textarea type="text" class="input-area" placeholder="Enter message"></textarea>
     </div>
 </template>
 
@@ -8,21 +24,101 @@
 
 <script>
 
+    import CatMessage from '~components/Chat/CatMessage.vue';
+    import UserMessage from '~components/Chat/UserMessage.vue';
+
+    export default {
+        components: {
+            CatMessage,
+            UserMessage
+        }
+    }
+
 </script>
 
 // --------------------------------------------------
 
 <style lang="scss" scoped>
 
+    @import '~assets/scss/variables';
+
     .chat-window {
-        width: 300px;
+        width: 275px;
         height: 320px;
         float: right;
-        background-color: #0f0;
+        background-color: $white;
         margin-right: 20px;
         position: fixed;
         bottom: 0;
         right: 100px;
+        box-shadow: 0px 0px 20px $grey-shadow;
+
+        .name-bar {
+            height: 17px;
+            border-bottom: $pink 2px solid;
+            padding: 8px;
+
+            .img {
+                $size: 45;
+
+                width: #{$size}px;
+                height: #{$size}px;
+                border-radius: #{$size / 2}px;
+                float: left;
+                margin-right: 10px;
+                background-color: $black;
+                position: relative;
+                z-index: 2;
+            }
+
+            .text {
+                font-size: 12px;
+                font-weight: 600;
+
+                .close-icon {
+                    display: block;
+                    float: right;
+                    width: 16px;
+                    height: 16px;
+                    font-size: 16px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .messages {
+            box-sizing: border-box;
+            height: 251px;
+            width: 100%;
+            position: absolute;
+            overflow-y: scroll;
+            padding: 30px 10px 10px;
+        }
+
+        textarea.input-area {
+            box-sizing: border-box;
+            height: 34px;
+            border: none;
+            border-top: $grey-light 1px solid;
+            padding: 8px 12px;
+            width: 100%;
+            resize: none;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            &::placeholder {
+                color: $grey-placeholder;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
     }    
 
 </style>

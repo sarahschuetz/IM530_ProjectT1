@@ -1,18 +1,16 @@
 <template>
-    <div class="chat-bar">
-        <logo/>
-    </div>
+    <message class="cat-message" />
 </template>
 
 // --------------------------------------------------
 
 <script>
 
-    import Logo from '~components/Logo.vue';
+    import Message from '~components/Chat/Message.vue';
 
     export default {
         components: {
-            Logo
+            Message
         }
     }
     
@@ -24,17 +22,10 @@
 
     @import '~assets/scss/variables';
 
-    .chat-bar {
-        width: 100px;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        right: 0;
-        
-        logo {
-            position: absolute;
-        }
+    .cat-message {
+        background-color: $pink;
+        clear: both;
+        float: left;
     }
-
 
 </style>
