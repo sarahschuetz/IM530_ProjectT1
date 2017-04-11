@@ -1,5 +1,5 @@
 <template>
-    <message class="user-message" />
+    <message class="user-message"  v-bind:message="message" />
 </template>
 
 // --------------------------------------------------
@@ -9,6 +9,7 @@
     import Message from '~components/Chat/Message.vue';
 
     export default {
+        props: ['message'],
         components: {
             Message
         }

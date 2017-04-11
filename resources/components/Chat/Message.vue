@@ -1,6 +1,6 @@
 <template>
     <div class="message">
-        laksldkjf aslkjdf lajs dfj asld jflaksj dflkj asdasdfasdf as df a sd f asd
+        {{ message }}
     </div>
 </template>
 
@@ -8,6 +8,10 @@
 
 <script>
     
+    export default {
+        props: ['message']
+    }
+
 </script>
 
 // --------------------------------------------------

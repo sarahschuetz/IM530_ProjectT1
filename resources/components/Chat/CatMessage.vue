@@ -1,5 +1,6 @@
 <template>
-    <message class="cat-message" />
+    <message class="cat-message" v-bind:message="message"
+             v-bind:style="{backgroundColor: $store.state.activeCat.color}" />
 </template>
 
 // --------------------------------------------------
@@ -9,6 +10,7 @@
     import Message from '~components/Chat/Message.vue';
 
     export default {
+        props: ['message'],
         components: {
             Message
         }
@@ -23,7 +25,6 @@
     @import '~assets/scss/variables';
 
     .cat-message {
-        background-color: $pink;
         clear: both;
         float: left;
     }

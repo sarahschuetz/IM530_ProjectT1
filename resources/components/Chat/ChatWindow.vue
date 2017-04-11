@@ -1,22 +1,21 @@
 <template>
-    <div class="chat-window">
-        <div class="name-bar">
+    <div class="chat-window" v-if="$store.state.activeCat">
+        <div class="name-bar" v-bind:style="{borderBottom: borderStyle}">
             <div class="img"></div>
             <div class="text">
-                Buttercup
-                <i class="material-icons close-icon">&#xE5CD;</i>
+                {{ $store.state.activeCat.name }}
+                <i class="material-icons close-icon"
+                   v-on:click="$store.dispatch('endChat', $store.state.activeCat)">&#xE5CD;</i>
             </div>
         </div>
         <div class="messages">
-            <cat-message/>
-            <user-message/>
-            <user-message/>
-            <cat-message/>
-            <user-message/>
-            <cat-message/>
-            <cat-message/>
+            <span v-for="message in $store.state.activeCat.messages">
+                <cat-message v-if="message.type == 'cat'" v-bind:message="message.text" />
+                <user-message v-if="message.type == 'user'" v-bind:message="message.text" />
+            </span>
         </div>
-        <textarea type="text" class="input-area" placeholder="Enter message"></textarea>
+        <textarea type="text" class="input-area" placeholder="Enter message"
+                  v-model="message" @keydown.enter.prevent.stop="sendMessage(message)"></textarea>
     </div>
 </template>
 
@@ -28,9 +27,25 @@
     import UserMessage from '~components/Chat/UserMessage.vue';
 
     export default {
+        data: function() {
+           return {
+                message: ''
+           }
+        },
         components: {
             CatMessage,
             UserMessage
+        },
+        methods: {
+            sendMessage: function(message) {
+                this.message = '';
+                this.$store.dispatch('sendMessage', message)
+            }
+        },
+        computed: {
+            borderStyle: function() {
+                return 2 + 'px solid ' + this.$store.state.activeCat.color;
+            }
         }
     }
 
@@ -55,7 +70,6 @@
 
         .name-bar {
             height: 17px;
-            border-bottom: $pink 2px solid;
             padding: 8px;
 
             .img {

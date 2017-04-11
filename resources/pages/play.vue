@@ -9,8 +9,15 @@
 
 <script>
 
+    import Vuex from 'vuex';
+
     export default {
+
         layout: 'chat',
+
+        mounted: function() {
+            this.$store.dispatch('loadCats');
+        }
     }
 
 </script>
