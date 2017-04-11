@@ -10,31 +10,22 @@ class CrimeController {
 
     * getAll (request, response) {
 
-        let crimes = yield Crime.find(function (err) {
-            if (err) return console.error(err)
-        })
+        let crimes = yield Crime.all()
 
         response.json(crimes)
     }
 
     * get (request, response) {
 
-        let id = request.param('id')
-        let crime = yield Crime.findById({ _id: id }, function(err) {
-            if (err) return console.error(err)
-        })
+        let name = request.param('name')
+        let crime = yield Crime.findBy({'crime' : name})
 
         response.json(crime)
     }
 
     * getRandom (request, response) {
 
-        yield Crime.findOneRandom(function (err, results) {
-            if (err) return console.error(err)
-            if (results) {
-                response.json(results)
-            }
-        })
+
     }
 
 }

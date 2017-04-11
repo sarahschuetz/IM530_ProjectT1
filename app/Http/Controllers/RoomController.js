@@ -10,19 +10,15 @@ class RoomController {
 
     * getAll (request, response) {
 
-        let rooms = yield Room.find(function (err) {
-            if (err) return console.error(err)
-        })
+        let rooms = yield Room.all()
 
         response.json(rooms)
     }
 
     * get (request, response) {
 
-        let id = request.param('id')
-        let room = yield Room.findById({ _id: id }, function(err) {
-            if (err) return console.error(err)
-        })
+        let name = request.param('name')
+        let room = yield Room.findBy({'name' : name})
 
         response.json(room)
     }

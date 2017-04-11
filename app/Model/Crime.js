@@ -1,11 +1,10 @@
-let Mongoose = use('Mongoose')
-let Random = require('mongoose-simple-random')
+'use strict'
 
-let crimeSchema = Mongoose.Schema({
-    name: String,
-    type: String
-});
+const LucidMongo = use('LucidMongo')
 
-crimeSchema.plugin(Random)
+class Crime extends LucidMongo {
 
-module.exports = Mongoose.model('Crime', crimeSchema)
+
+}
+
+module.exports = Crime
