@@ -32,7 +32,10 @@ const providers = [
   'adonis-websocket/providers/WsProvider',
   'adonis-middleware/providers/AppMiddlewareProvider',
   'adonis-auth/providers/AuthManagerProvider',
-  'adonis-mongoose/providers/MongooseProvider'
+  'adonis-mongoose/providers/MongooseProvider',
+    'adonis-lucid-mongodb/providers/DatabaseProvider',
+    'adonis-lucid-mongodb/providers/LucidMongoProvider',
+    'adonis-lucid-mongodb/providers/FactoryProvider'
 ]
 
 /*
@@ -52,7 +55,11 @@ const aceProviders = [
   'adonis-ace/providers/CommandProvider',
   'adonis-commands/providers/GeneratorsProvider',
   'adonis-commands/providers/HelperCommandsProvider',
-  'adonis-commands/providers/ReplProvider'
+  'adonis-commands/providers/ReplProvider',
+    'adonis-lucid-mongodb/providers/CommandsProvider',
+    'adonis-lucid-mongodb/providers/MigrationsProvider',
+    'adonis-lucid-mongodb/providers/SchemaProvider',
+    'adonis-lucid-mongodb/providers/SeederProvider'
 ]
 
 /*
@@ -75,7 +82,9 @@ const aliases = {
   Hash: 'Adonis/Src/Hash',
   Helpers: 'Adonis/Src/Helpers',
   Lucid: 'Adonis/Src/Lucid',
+    LucidMongo: 'Adonis/Src/LucidMongo',
   Middleware: 'Adonis/Src/Middleware',
+    Migrations: 'Adonis/Src/Migrations',
   Route: 'Adonis/Src/Route',
   Schema: 'Adonis/Src/Schema',
   View: 'Adonis/Src/View',
