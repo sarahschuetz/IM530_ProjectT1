@@ -8,7 +8,7 @@
                    v-on:click="$store.dispatch('endChat', $store.state.activeCat)">&#xE5CD;</i>
             </div>
         </div>
-        <div class="messages">
+        <div class="messages" v-chat-scroll>
             <span v-for="message in $store.state.activeCat.messages">
                 <cat-message v-if="message.type == 'cat'" v-bind:message="message.text" />
                 <user-message v-if="message.type == 'user'" v-bind:message="message.text" />
@@ -39,7 +39,7 @@
         methods: {
             sendMessage: function(message) {
                 this.message = '';
-                this.$store.dispatch('sendMessage', message)
+                this.$store.dispatch('sendMessage', message);
             }
         },
         computed: {
