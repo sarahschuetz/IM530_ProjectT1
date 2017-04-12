@@ -29,7 +29,10 @@ class PersonController {
             return .5 - Math.random();
         })
 
-        people = people.slice(0, count)
+        if(count > people.length) {
+            people = people.slice(0, count)
+        }
+
         response.json(people)
     }
 

@@ -29,7 +29,9 @@ class CrimeController {
             return .5 - Math.random();
         })
 
-        crimes = crimes.slice(0, count)
+        if(count > crimes.length) {
+            crimes = crimes.slice(0, count)
+        }
 
         response.json(crimes)
     }

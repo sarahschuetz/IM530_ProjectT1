@@ -28,10 +28,12 @@ class CatController {
         let cats = yield Cat.all()
 
         cats = cats.sort(function() {
-            return .5 - Math.random();
+            return .5 - Math.random()
         })
 
-        cats = cats.slice(0, count)
+        if(count > cats.length) {
+            cats = cats.slice(0, count)
+        }
 
         response.json(cats)
 
