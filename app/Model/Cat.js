@@ -15,7 +15,7 @@ module.exports = Mongoose.model('Cat', catSchema) */
 
 'use strict'
 
-const LucidMongo = use('LucidMongo')
+let LucidMongo = use('LucidMongo')
 
 class Cat extends LucidMongo {
 

@@ -1,6 +1,6 @@
 'use strict'
 
-const LucidMongo = use('LucidMongo')
+let LucidMongo = use('LucidMongo')
 
 class Person extends LucidMongo {
 

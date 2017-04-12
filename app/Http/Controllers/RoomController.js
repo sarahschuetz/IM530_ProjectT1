@@ -9,14 +9,12 @@ class RoomController {
     }
 
     * getAll (request, response) {
-
         let rooms = yield Room.all()
 
         response.json(rooms)
     }
 
     * get (request, response) {
-
         let name = request.param('name')
         let room = yield Room.findBy({'name' : name})
 

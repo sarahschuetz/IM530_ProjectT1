@@ -3,6 +3,7 @@
 let Apiai = require('apiai')
 let Cat = use('App/Model/Cat')
 
+
 class CatController {
 
     constructor () {
@@ -10,14 +11,12 @@ class CatController {
     }
 
     * getAll (request, response) {
-
         let cats = yield Cat.all()
 
         response.json(cats)
     }
 
     * get (request, response) {
-
         let name = request.param('name')
         let cat = yield Cat.findBy({'name' : name})
 
@@ -26,14 +25,23 @@ class CatController {
 
     * getRandom (request, response) {
         let count = request.param('count')
+        let cats = yield Cat.all()
+
+        cats = cats.sort(function() {
+            return .5 - Math.random();
+        })
+
+        cats = cats.slice(0, count)
+
+        response.json(cats)
 
     }
 
     * talk (request, response) {
         let text = request.param('text')
-        let id = request.param('id')
+        let name = request.param('name')
 
-        // TODO: get cat by id
+        let cat = yield Cat.findBy({'name' : name})
 
         // talk with specific cat
         let req = Apiai(cat.apiai).textRequest(text, {
