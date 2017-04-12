@@ -39,7 +39,7 @@
         methods: {
             sendMessage: function(message) {
                 this.message = '';
-                this.$store.dispatch('sendMessage', message);
+                this.$store.dispatch('sendMessage', {message: message, cat: this.$store.state.activeCat});
             }
         },
         computed: {

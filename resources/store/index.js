@@ -13,23 +13,16 @@ const store = new Vuex.Store({
 
     actions: {
         loadCats: function(context, cats) {
-            context.commit('setAllCats', [{
-                name: 'Whiskers',
-                color: '#f00'
-            }, {
-                name: 'Oreo',
-                color: '#0f0'
-            }]);
-            context.commit('setAvailableCats');
+            let numberOfCats = Math.round(Math.random() * 3) + 3;
 
-            // Axios.get('/api/cats/random/2')
-            // .then((result) => {
-            //     context.commit('setCats', {cats: result.data});
-            // })
-            // .catch((error) => {
-            //     // context.commit('setError', error.msg);
-            //     // context.commit('setLoading', false);
-            // });
+            Axios.get('/api/cats/random/' + numberOfCats)
+            .then((result) => {
+                context.commit('setAllCats', result.data);
+                context.commit('setAvailableCats');
+            })
+            .catch((error) => {
+                error.log(error);
+            });
         },
         // loadOwner: function(context, data) {
 
@@ -66,8 +59,18 @@ const store = new Vuex.Store({
             context.commit('addAvailableCat', currentCat);
             context.commit('setActiveCat');
         },
-        sendMessage: function(context, message) {
-            context.commit('addMessage', {message: message, type: 'user'});
+        sendMessage: function(context, data) {
+            context.commit('addMessage', {message: data.message, cat: data.cat, type: 'user'});
+            Axios.post('/api/cat/talk', {
+                apiaiKey: data.cat.apiai,
+                message: data.message
+            })
+            .then((result) => {
+                context.commit('addMessage', {message: result.message, cat: data.cat, type: 'cat'});
+            })
+            .catch((error) => {
+                error.log(error);
+            });
         }
     },
     
@@ -87,16 +90,21 @@ const store = new Vuex.Store({
             }
         },
         removeAvailableCat: function(state, cat) {
-            var index = state.availableCats.indexOf(cat);
+            let index = state.availableCats.indexOf(cat);
             if (index > -1) {
                 state.availableCats.splice(index, 1);
             }
         },
         addMessage: function(state, messageData) {
-            var index = state.allCats.indexOf(state.activeCat);
+
+
+            let index = state.allCats.indexOf(messageData.cat);
+
+            // if no messages are available initialize array
             if(!state.allCats[index].messages) {
                 state.allCats[index].messages = [];
             }
+
             state.allCats[index].messages.push({
                 text: messageData.message,
                 type: messageData.type
