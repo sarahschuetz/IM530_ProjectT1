@@ -9,14 +9,12 @@ class CrimeController {
     }
 
     * getAll (request, response) {
-
         let crimes = yield Crime.all()
 
         response.json(crimes)
     }
 
     * get (request, response) {
-
         let name = request.param('name')
         let crime = yield Crime.findBy({'crime' : name})
 
@@ -24,8 +22,16 @@ class CrimeController {
     }
 
     * getRandom (request, response) {
+        let count = request.param('count')
+        let crimes = yield Crime.all()
 
+        crimes = crimes.sort(function() {
+            return .5 - Math.random();
+        })
 
+        crimes = crimes.slice(0, count)
+
+        response.json(crimes)
     }
 
 }
