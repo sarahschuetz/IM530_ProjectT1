@@ -41,12 +41,12 @@ class CatController {
 
     * talk (request, response) {
 
-        let test = request.hostname()
+        let test = request.params()
 
        // let message = request.params('message')
         //let apiaiKey = request.param('apiaiKey')
 
-        response.send(test)
+        response.json(test)
 
         // talk with specific cat
         /*
