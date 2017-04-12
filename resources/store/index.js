@@ -8,7 +8,8 @@ const store = new Vuex.Store({
         allCats: [],
         availableCats: [],
         activeCat: null,
-        rooms: []
+        rooms: [],
+        currentLocation: 'hallway'
     },
 
     actions: {
@@ -71,6 +72,9 @@ const store = new Vuex.Store({
             .catch((error) => {
                 error.log(error);
             });
+        },
+        changeRoom: function(context, room) {
+            context.commit('setCurrentRoom', room);
         }
     },
     
@@ -103,6 +107,9 @@ const store = new Vuex.Store({
                 text: messageData.message,
                 type: messageData.type
             });
+        },
+        setCurrentRoom: function(state, room) {
+            state.currentLocation = room;
         }
         // setOwner: function(state, data) {
         //     state.owner = data;
