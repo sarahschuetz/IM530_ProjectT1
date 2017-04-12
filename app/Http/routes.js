@@ -22,7 +22,7 @@ const Route = use('Route')
 Route.get('/api/cats', 'CatController.getAll')
 Route.get('/api/cat/:name', 'CatController.get')
 Route.get('/api/cats/random/:count', 'CatController.getRandom')
-Route.get('/api/cat/:name/talk/:text', 'CatController.talk')
+Route.post('/api/cat/talk', 'CatController.talk')
 
 // 'RoomController' - Routes
 Route.get('/api/rooms', 'RoomController.getAll')

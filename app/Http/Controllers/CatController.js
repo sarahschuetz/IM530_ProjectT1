@@ -40,13 +40,11 @@ class CatController {
     }
 
     * talk (request, response) {
-        let text = request.param('text')
-        let name = request.param('name')
-
-        let cat = yield Cat.findBy({'name' : name})
+        let message = request.param('message')
+        let apiaiKey = request.param('apiaiKey')
 
         // talk with specific cat
-        let req = Apiai(cat.apiai).textRequest(text, {
+        let req = Apiai(apiaiKey).textRequest(message, {
             // TODO: use correct session-id
             sessionId : 'testsession'
         })
