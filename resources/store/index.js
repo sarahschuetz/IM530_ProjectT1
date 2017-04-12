@@ -66,7 +66,7 @@ const store = new Vuex.Store({
                 message: data.message
             })
             .then((result) => {
-                context.commit('addMessage', {message: result.message, cat: data.cat, type: 'cat'});
+                context.commit('addMessage', {message: result.data, cat: data.cat, type: 'cat'});
             })
             .catch((error) => {
                 error.log(error);
@@ -96,7 +96,6 @@ const store = new Vuex.Store({
             }
         },
         addMessage: function(state, messageData) {
-
 
             let index = state.allCats.indexOf(messageData.cat);
 
