@@ -76,6 +76,9 @@ const store = new Vuex.Store({
     
     mutations: {
         setAllCats: function(state, cats) {
+            for (let cat of cats) {
+                cat.messages = [];
+            }
             state.allCats = cats;
         },
         setAvailableCats: function(state) {
@@ -96,15 +99,7 @@ const store = new Vuex.Store({
             }
         },
         addMessage: function(state, messageData) {
-
-            let index = state.allCats.indexOf(messageData.cat);
-
-            // if no messages are available initialize array
-            if(!state.allCats[index].messages) {
-                state.allCats[index].messages = [];
-            }
-
-            state.allCats[index].messages.push({
+            messageData.cat.messages.push({
                 text: messageData.message,
                 type: messageData.type
             });
