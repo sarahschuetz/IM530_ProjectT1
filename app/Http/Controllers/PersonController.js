@@ -29,7 +29,7 @@ class PersonController {
             return .5 - Math.random();
         })
 
-        if(count > people.length) {
+        if(count < Person.count()) {
             people = people.slice(0, count)
         }
 

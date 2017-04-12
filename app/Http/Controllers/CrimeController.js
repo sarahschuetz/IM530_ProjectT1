@@ -29,7 +29,7 @@ class CrimeController {
             return .5 - Math.random();
         })
 
-        if(count > crimes.length) {
+        if(count < Crime.count()) {
             crimes = crimes.slice(0, count)
         }
 

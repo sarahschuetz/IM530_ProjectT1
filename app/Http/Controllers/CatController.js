@@ -31,19 +31,25 @@ class CatController {
             return .5 - Math.random()
         })
 
-        if(count > cats.length) {
+        if(count < Cat.count()) {
             cats = cats.slice(0, count)
         }
 
-        response.json(cats)
+        response.send(cats)
 
     }
 
     * talk (request, response) {
-        let message = request.param('message')
-        let apiaiKey = request.param('apiaiKey')
+
+        let test = request.hostname()
+
+       // let message = request.params('message')
+        //let apiaiKey = request.param('apiaiKey')
+
+        response.send(test)
 
         // talk with specific cat
+        /*
         let req = Apiai(apiaiKey).textRequest(message, {
             // TODO: use correct session-id
             sessionId : 'testsession'
@@ -57,7 +63,7 @@ class CatController {
             return
         })
 
-        req.end()
+        req.end() */
     }
 
 }
