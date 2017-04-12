@@ -1,27 +1,25 @@
 'use strict'
 
+let Apiai = require('apiai')
 let Cat = use('App/Model/Cat')
 
 class CatController {
 
     constructor () {
+
     }
 
     * getAll (request, response) {
 
-        let cats = yield Cat.find(function (err) {
-            if (err) return console.error(err)
-        })
+        let cats = yield Cat.all()
 
         response.json(cats)
     }
 
     * get (request, response) {
 
-        let id = request.param('id')
-        let cat = yield Cat.findById({ _id: id }, function(err) {
-            if (err) return console.error(err)
-        })
+        let name = request.param('name')
+        let cat = yield Cat.findBy({'name' : name})
 
         response.json(cat)
     }
@@ -29,12 +27,29 @@ class CatController {
     * getRandom (request, response) {
         let count = request.param('count')
 
-        yield Cat.findRandom({},{},{limit : count},function (err, results) {
-            if (err) return console.error(err)
-            if (results) {
-                response.json(results)
-            }
+    }
+
+    * talk (request, response) {
+        let text = request.param('text')
+        let id = request.param('id')
+
+        // TODO: get cat by id
+
+        // talk with specific cat
+        let req = Apiai(cat.apiai).textRequest(text, {
+            // TODO: use correct session-id
+            sessionId : 'testsession'
         })
+
+        req.on('response', function(res) {
+            response.json(res)
+        })
+
+        req.on('error', function(error){
+            return
+        })
+
+        req.end()
     }
 
 }

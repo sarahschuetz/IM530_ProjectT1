@@ -10,31 +10,21 @@ class PersonController {
 
     * getAll (request, response) {
 
-        let people = yield Person.find(function (err) {
-            if (err) return console.error(err)
-        })
+        let people = yield Person.all()
 
         response.json(people)
     }
 
     * get (request, response) {
 
-        let id = request.param('id')
-        let person = yield Person.findById({ _id: id }, function(err) {
-            if (err) return console.error(err)
-        })
+        let name = request.param('name')
+        let person = yield Person.findBy({'name' : name})
 
         response.json(person)
     }
 
     * getRandom (request, response) {
 
-        yield Person.findOneRandom(function (err, results) {
-            if (err) return console.error(err)
-            if (results) {
-                response.json(results)
-            }
-        })
     }
 
 }

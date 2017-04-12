@@ -1,7 +1,10 @@
-let Mongoose = use('Mongoose')
+'use strict'
 
-let roomSchema = Mongoose.Schema({
-    name: String
-});
+const LucidMongo = use('LucidMongo')
 
-module.exports = Mongoose.model('Room', roomSchema)
+class Room extends LucidMongo {
+
+
+}
+
+module.exports = Room

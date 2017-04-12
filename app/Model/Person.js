@@ -1,14 +1,10 @@
-let Mongoose = use('Mongoose')
-let Random = require('mongoose-simple-random')
+'use strict'
 
-let personSchema = Mongoose.Schema({
-    firstname: String,
-    lastname: String,
-    age: Number,
-    job: String,
-    relationship: String
-});
+const LucidMongo = use('LucidMongo')
 
-personSchema.plugin(Random)
+class Person extends LucidMongo {
 
-module.exports = Mongoose.model('Person', personSchema)
+
+}
+
+module.exports = Person
