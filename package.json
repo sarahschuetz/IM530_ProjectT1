@@ -28,12 +28,14 @@
     "apiai": "^4.0.1",
     "axios": "^0.16.1",
     "cross-env": "^3.1.4",
+    "css-loader": "^0.28.0",
     "gulp-nodemon": "^2.2.1",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-util": "^3.0.8",
     "image-map": "^1.0.4",
     "node-sass": "^4.5.2",
+    "nodemon": "^1.11.0",
     "nuxt": "latest",
     "sass-loader": "^6.0.3",
     "vinyl-named": "^1.1.0",
@@ -66,7 +68,6 @@
     "gulp-autoprefixer": "^3.1.1",
     "gulp-cssmin": "^0.1.7",
     "gulp-uglify": "^2.1.2",
-    "nodemon": "^1.11.0",
     "standard": "^8.6.0"
   }
 }
