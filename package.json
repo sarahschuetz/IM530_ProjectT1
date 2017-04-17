@@ -13,7 +13,7 @@
     "start": "cross-env NODE_ENV=production node server.js",
     "precommit": "npm run lint",
     "lint": "standard && eslint --ext .js,.vue resources/",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build && npm install --dev"
   },
   "dependencies": {
     "adonis-ace": "^3.0.6",
@@ -28,17 +28,22 @@
     "apiai": "^4.0.1",
     "axios": "^0.16.1",
     "cross-env": "^3.1.4",
+    "css-loader": "^0.28.0",
     "gulp-nodemon": "^2.2.1",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-util": "^3.0.8",
     "image-map": "^1.0.4",
+    "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
     "nuxt": "latest",
+    "sass-loader": "^6.0.3",
     "vinyl-named": "^1.1.0",
     "vue-chat-scroll": "^1.1.0",
     "vue-loader": "^11.3.4",
     "vue-style-loader": "^3.0.0",
+    "webpack": "^2.3.3",
+    "webpack-stream": "^3.2.0",
     "yargs": "^7.0.2",
     "youch": "^2.0.4"
   },
