@@ -1,7 +1,7 @@
 <template>
     <div class="chat-window" v-if="$store.state.activeCat">
-        <div class="name-bar" v-bind:style="{borderBottom: borderStyle}">
-            <div class="img"></div>
+        <div class="name-bar" :style="{borderBottom: borderStyle}">
+            <cat-icon class="img" :cat="$store.state.activeCat" />
             <div class="text">
                 {{ $store.state.activeCat.name }}
                 <i class="material-icons close-icon"
@@ -10,8 +10,8 @@
         </div>
         <div class="messages" v-chat-scroll>
             <span v-for="message in $store.state.activeCat.messages">
-                <cat-message v-if="message.type == 'cat'" v-bind:message="message.text" />
-                <user-message v-if="message.type == 'user'" v-bind:message="message.text" />
+                <cat-message v-if="message.type == 'cat'" :message="message.text" />
+                <user-message v-if="message.type == 'user'" :message="message.text" />
             </span>
         </div>
         <textarea type="text" class="input-area" placeholder="Enter message"
@@ -23,6 +23,7 @@
 
 <script>
 
+    import CatIcon from '~components/Chat/CatIcon.vue';
     import CatMessage from '~components/Chat/CatMessage.vue';
     import UserMessage from '~components/Chat/UserMessage.vue';
 
@@ -33,6 +34,7 @@
            }
         },
         components: {
+            CatIcon,
             CatMessage,
             UserMessage
         },
@@ -80,7 +82,6 @@
                 border-radius: #{$size / 2}px;
                 float: left;
                 margin-right: 10px;
-                background-color: $black;
                 position: relative;
                 z-index: 2;
             }
