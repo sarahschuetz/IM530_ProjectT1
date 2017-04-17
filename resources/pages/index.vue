@@ -13,6 +13,14 @@
             </nuxt-link>
 
         </div>
+        <div id="cats">
+            <div class="cat"><img src="~static/img/cats-01.png" alt="Buttercup"></div>
+            <div class="cat"><img src="~static/img/cats-02.png" alt="Buttercup"></div>
+            <div class="cat"><img src="~static/img/cats-03.png" alt="Buttercup"></div>
+            <div class="cat"><img src="~static/img/cats-04.png" alt="Buttercup"></div>
+            <div class="cat"><img src="~static/img/cats-05.png" alt="Buttercup"></div>
+            <div class="cat"><img src="~static/img/cats-06.png" alt="Buttercup"></div>
+        </div>
     </div>
 </template>
 
@@ -42,7 +50,7 @@
             width: #{$width}px;
             height: #{$height}px;
             position: relative;
-            top: calc(50% - #{$height / 2}px);
+            top: calc(45% - #{$height / 2}px);
             margin: 0 auto;
 
             h1 {
@@ -54,6 +62,32 @@
             p {
                 margin-top: 0;
                 margin-bottom: 17px;
+            }
+        }
+
+        #cats {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 30%;
+            padding: 0 20px;
+            box-sizing: border-box;
+
+            .cat {
+                height: 100%;
+                width: calc(100% / 6);
+                position: relative;
+                float: left;
+
+                img {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0; 
+                    right: 0; 
+                    max-height: 100%;
+                    max-width: 100%;
+                    margin: 0 auto;
+                }
             }
         }
     }
