@@ -12,7 +12,7 @@ class WebhookController {
         let cat = params.cat
         //let cat = params.cat
 
-        let speech = 'I am' + cat.name
+        let speech = 'I am ' + cat
         /*
         if (req.body) {
             let requestBody = request.body
@@ -39,11 +39,9 @@ class WebhookController {
         */
 
         response.json({
-            "fulfillment" : {
                 speech: speech,
                 source: "purr-purr-purr-app",
                 displayText: speech
-            }
         })
     }
 
