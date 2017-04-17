@@ -10,10 +10,11 @@ class WebhookController {
     * webhook (request, response) {
         let params = request.all()
         //let cat = params.cat
-        var speech = 'empty speech'
+        /*
+        let speech = 'empty speech'
 
         if (req.body) {
-            var requestBody = request.body
+            let requestBody = request.body
 
             if (requestBody.result) {
                 speech = ''
@@ -33,6 +34,11 @@ class WebhookController {
             speech: speech,
             displayText: speech,
             source: 'purr-purr-purr-webhook'
+        })
+        */
+
+        response.json({
+            data : 'text'
         })
     }
 
