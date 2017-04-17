@@ -64,7 +64,8 @@ const store = new Vuex.Store({
             context.commit('addMessage', {message: data.message, cat: data.cat, type: 'user'});
             Axios.post('/api/cat/talk', {
                 apiaiKey: data.cat.apiai,
-                message: data.message
+                message: data.message,
+                cat: data.cat
             })
             .then((result) => {
                 context.commit('addMessage', {message: result.data, cat: data.cat, type: 'cat'});
