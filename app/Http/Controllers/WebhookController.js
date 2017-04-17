@@ -10,18 +10,30 @@ class WebhookController {
     * webhook (request, response) {
         let params = request.all()
         //let cat = params.cat
+        var speech = 'empty speech'
 
-        let speech = 'test answer'
+        if (req.body) {
+            var requestBody = request.body
 
-        let webhookAnswer = {
-            "speech": speech,
-            "displayText": speech,
-            //"data": data,
-            //"contextOut": [],
-            //"source": "apiai-weather-webhook-sample"
+            if (requestBody.result) {
+                speech = ''
+
+                if (requestBody.result.fulfillment) {
+                    speech += requestBody.result.fulfillment.speech
+                    speech += ' '
+                }
+
+                if (requestBody.result.action) {
+                    speech += 'action: ' + requestBody.result.action
+                }
+            }
         }
 
-        response.json(webhookAnswer)
+        response.json({
+            speech: speech,
+            displayText: speech,
+            source: 'purr-purr-purr-webhook'
+        })
     }
 
 }
