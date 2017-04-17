@@ -1,6 +1,10 @@
 {
   "name": "adonuxt",
   "version": "0.0.1",
+  "engines": {
+    "node": "7.2.0",
+    "npm": "4.4.1"
+  },
   "author": "Sarah Sauseng & Sarah Schütz",
   "description": "",
   "license": "MIT",
