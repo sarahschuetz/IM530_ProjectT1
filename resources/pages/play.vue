@@ -1,7 +1,7 @@
 <template>
     <div>
         <section>
-            <h1>Welcome home, Sarah!</h1>
+            <h1>Welcome home, Sarah S.!</h1>
             <p>You are a student at FH Hagenberg.</p>
         </section>
         <section>
