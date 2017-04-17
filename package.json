@@ -13,7 +13,7 @@
     "start": "cross-env NODE_ENV=production node server.js",
     "precommit": "npm run lint",
     "lint": "standard && eslint --ext .js,.vue resources/",
-    "heroku-postbuild": "npm run build && npm install --dev"
+    "heroku-postbuild": "npm run build && npm rebuild node-sass"
   },
   "dependencies": {
     "adonis-ace": "^3.0.6",
