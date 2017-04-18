@@ -13,7 +13,7 @@ class WebhookController {
         let catName = params['originalRequest']['data']['cat']['name']
         let middleware = params['middleware']
 
-        let speech = 'I am ' + catName + query + middleware
+        let speech = 'I am ' + catName + query + params
 
         response.json({
                 speech: speech,
