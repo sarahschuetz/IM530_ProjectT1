@@ -30,7 +30,7 @@ const globalMiddleware = [
 */
 const namedMiddleware = {
     auth: 'Adonis/Middleware/Auth',
-    webhook:  'App/Http/Middleware/Webhook'
+    webhook:  'App/Http/Middleware/Webhook_Middleware'
 }
 
 /*
