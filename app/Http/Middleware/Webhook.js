@@ -1,10 +1,10 @@
 'use strict'
 
 let WebhookController = use('App/Http/Controllers/WebhookController.js')
-let constants = [{
+let constants = {
     'name_const': ['name'],
     'room_const': ['room']
-}]
+}
 
 class Webhook {
 
