@@ -7,13 +7,8 @@ class WebhookController {
 
     }
 
-    * webhook (request, response) {
-        let params = request.all()
-        let query = params['result']['resolvedQuery']
-        let catName = params['originalRequest']['data']['cat']['name']
-        let middleware = request.middleware
-
-        let speech = 'I am ' + catName + query + middleware
+    * default_call (request, response) {
+        let speech = 'I am a fat and innocent cat! You must believe me.'
 
         response.json({
                 speech: speech,
@@ -37,9 +32,26 @@ class WebhookController {
 
     * get_room (request, response) {
         let params = request.all()
-        let age = params['originalRequest']['data']['cat']['age']
+        let room = params['originalRequest']['data']['room']
 
-        let speech = 'I am ' + age + 'old.'
+        let speech = 'I am ' + room + '.'
+
+        response.json({
+            speech: speech,
+            source: "purr-purr-purr-app",
+            displayText: speech
+        })
+    }
+
+    * get_age (request, response) {
+        let params = request.all()
+        let age = params['originalRequest']['data']['cat']['age']
+        let answers = [
+            'I am ' + age + ' years old.',
+            age + ' long years.'
+        ]
+
+        let speech = answers[Math.floor(Math.random() * answers.length)]
 
         response.json({
             speech: speech,

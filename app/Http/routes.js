@@ -43,7 +43,7 @@ Route.get('/api/save/:name', 'StatisticController.saveGame')
 
 // 'Webhook' - Routes
 Route
-    .post('/webhook', 'WebhookController.webhook')
+    .post('/webhook', 'WebhookController.default_call')
     .middleware('webhook')
 
 
