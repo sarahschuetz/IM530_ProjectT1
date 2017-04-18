@@ -44,12 +44,18 @@ class CatController {
         let params = request.all()
         let message = params.message
         let apiaiKey = params.apiaiKey
+        let cat = params.cat
 
         // talk with specific cat
-
         let req = Apiai(apiaiKey).textRequest(message, {
             // TODO: use correct session-id
-            sessionId : 'testsession'
+            sessionId : 'sessionId',
+            originalRequest : {
+                source : 'purr-purr-purr',
+                data : {
+                    cat : cat
+                }
+            }
         })
 
         req.on('response', function(res) {
