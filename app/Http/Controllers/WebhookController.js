@@ -9,11 +9,11 @@ class WebhookController {
 
     * webhook (request, response) {
         let params = request.all()
-        //let origin = params.originalRequest
+        let origin = params.data
         //let cat = origin.data.cat
         let paramArray = JSON.stringify(params)
 
-        let speech = 'I am ' + paramArray
+        let speech = 'I am ' + origin + paramArray
 
         response.json({
                 speech: speech,
