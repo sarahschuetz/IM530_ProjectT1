@@ -42,6 +42,9 @@ Route.get('/api/crime/random', 'CrimeController.getRandom')
 Route.get('/api/save/:name', 'StatisticController.saveGame')
 
 // 'Webhook' - Routes
-Route.post('/webhook', 'WebhookController.webhook')
+Route
+    .post('/webhook', 'WebhookController.webhook')
+    .middleware('webhook')
+
 
 Route.any('*', 'NuxtController.render')
