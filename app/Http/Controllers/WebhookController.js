@@ -9,7 +9,7 @@ class WebhookController {
 
     * webhook (request, response) {
         let params = request.all()
-        let origin = params['originalRequest']
+        let origin = params['originalRequest']['data']['cat']['name']
         //let cat = origin.data.cat
         let paramArray = JSON.stringify(params)
 
