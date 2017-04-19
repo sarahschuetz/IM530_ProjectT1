@@ -40,6 +40,8 @@
 
             let cats = Axios.get('/api/cats/random/' + numberOfCats);
             let rooms = Axios.get('/api/rooms');
+            // let owner = Axios.get('/api/owner/random');
+            // let crime = Axios.get('/api/crime/random');
 
             Promise.all([cats, rooms]).then((result) => {
 

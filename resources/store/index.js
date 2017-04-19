@@ -9,25 +9,24 @@ const store = new Vuex.Store({
         activeCat: null,
         rooms: [],
         currentRoom: null,
-        scenarioId: null
+        scenarioId: null,
+        crime: null,
+        guiltyCat: null,
+        owner: null
     },
 
     actions: {
         loadCats: function(context, cats) {
+            let randomIndex = Math.floor(Math.random() * cats.length);
             context.commit('setAllCats', cats);
+            context.commit('setGuiltyCat', cats[randomIndex]);
         },
-        // loadOwner: function(context, data) {
-
-        //     Axios.get('/todos')
-        //     .then((result) => {
-        //         context.commit('setTodos', {todos: result.data.data});
-        //         context.commit('setLoading', false);
-        //     })
-        //     .catch((error) => {
-        //         // context.commit('setError', error.msg);
-        //         // context.commit('setLoading', false);
-        //     });
-        // },
+        loadOwner: function(context, owner) {
+            context.commit('setOwner', owner);
+        },
+        loadCrime: function(context, crime) {
+            context.commit('setCrime', crime);
+        },
         loadRooms: function(context, rooms) {
             context.commit('setRooms', rooms);
             context.commit('setCurrentRoom', 'hallway');
@@ -83,6 +82,9 @@ const store = new Vuex.Store({
         },
         setActiveCat: function(state, cat) {
             state.activeCat = cat;
+        },
+        setGuiltyCat: function(state, cat) {
+            state.guiltyCat = cat;
         },
         addMessage: function(state, messageData) {
             messageData.cat.messages.push({
@@ -149,10 +151,13 @@ const store = new Vuex.Store({
         },
         setScenarioId: function(state, id) {
             state.scenarioId = id;
-        }
-        // setOwner: function(state, data) {
-        //     state.owner = data;
-        // },
+        },
+        setOwner: function(state, owner) {
+            state.owner = owner;
+        },
+        setCrime: function(state, crime) {
+            state.crime = crime;
+        },
     }
 });
 
