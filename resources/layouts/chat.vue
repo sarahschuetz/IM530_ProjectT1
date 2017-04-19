@@ -5,6 +5,7 @@
             <nuxt/>
         </main>
         <chat-bar/>
+        <page-footer text="Have fun!"/>
         <chat-window/>
     </div>
 </template>
@@ -13,15 +14,17 @@
 
 <script>
 
-    import Navigation from '~components/Navigation.vue'
     import ChatBar from '~components/Chat/ChatBar.vue'
     import ChatWindow from '~components/Chat/ChatWindow.vue'
+    import Navigation from '~components/Navigation.vue'
+    import PageFooter from '~components/PageFooter.vue'
 
     export default {
         components: {
-            Navigation,
             ChatWindow,
-            ChatBar
+            ChatBar,
+            Navigation,
+            PageFooter
         }
     }
     
