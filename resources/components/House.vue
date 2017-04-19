@@ -41,7 +41,7 @@
             <area shape="rect"
                   coords="89,542, 164,703"
                   alt="Storage Room"
-                  v-on:click="changeRoom('storage room')">
+                  v-on:click="changeRoom('toilet')">
         </map>
     </div>
 </template>
