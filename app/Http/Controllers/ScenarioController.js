@@ -39,7 +39,6 @@ class ScenarioController {
         scenario.crime = test_crime
         scenario.room = test_room
         scenario.person = test_person
-        scenario.creation_date = new Date()
         scenario.all_cats = [{cat: 'Whiskers'},{cat: 'Pumpkin'},{cat: 'Oreo'},{cat: 'Waffles'}]
 
         yield scenario.save()

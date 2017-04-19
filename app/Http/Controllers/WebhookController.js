@@ -32,7 +32,7 @@ class WebhookController {
 
     * get_room (request, response) {
         let params = request.all()
-        let room = params['originalRequest']['data']['room']
+        let room = params['originalRequest']['data']['scenario']['room']
 
         let speech = 'I am ' + room + '.'
 
@@ -46,10 +46,9 @@ class WebhookController {
     * get_age (request, response) {
         let params = request.all()
         let age = params['originalRequest']['data']['cat']['age']
-        let answers = [
-            'I am ' + age + ' years old.',
-            age + ' long years.'
-        ]
+        let answers = []
+        answers.append( 'I am ' + age + ' years old.')
+        answers.append( age + ' long years.')
 
         let speech = answers[Math.floor(Math.random() * answers.length)]
 
