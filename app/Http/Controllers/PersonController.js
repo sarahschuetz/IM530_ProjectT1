@@ -15,8 +15,8 @@ class PersonController {
     }
 
     * get (request, response) {
-        let name = request.param('name')
-        let person = yield Person.findBy({'name' : name})
+        let id = request.param('id')
+        let person = yield Person.findBy('_id', id)
 
         response.json(person)
     }

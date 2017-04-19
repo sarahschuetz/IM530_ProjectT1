@@ -15,8 +15,8 @@ class CrimeController {
     }
 
     * get (request, response) {
-        let name = request.param('name')
-        let crime = yield Crime.findBy({'crime' : name})
+        let id = request.param('id')
+        let crime = yield Crime.findBy('_id', id)
 
         response.json(crime)
     }

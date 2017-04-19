@@ -15,8 +15,8 @@ class RoomController {
     }
 
     * get (request, response) {
-        let name = request.param('name')
-        let room = yield Room.findBy({'name' : name})
+        let id = request.param('id')
+        let room = yield Room.findBy('_id', id)
 
         response.json(room)
     }
