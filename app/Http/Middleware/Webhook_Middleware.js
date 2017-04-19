@@ -4,7 +4,7 @@ let WebhookController = use('App/Http/Controllers/WebhookController.js')
 let query_constants = {
     'name_const': ['name', 'call you', 'are you', 'is your name'],
     'actual_room_const': ['room', 'where are you', 'actual location'],
-    'age_const': ['old'],
+    'age_const': ['old', 'age'],
     'crime_const': [],
     'crime_room_const': []
 }
@@ -19,7 +19,7 @@ class Webhook {
             yield WebhookController.get_name(request,response)
         }
 
-        if(query.includes(query_constants.room_const[0])){
+        if(query.includes(query_constants.actual_room_const[0])){
             yield WebhookController.get_room(request,response)
         }
 
