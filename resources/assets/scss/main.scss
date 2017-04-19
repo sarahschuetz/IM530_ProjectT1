@@ -26,10 +26,20 @@ body {
 }
 
 main {
+    width: 100%;
     display: block;
-    width: 750px;
-    min-height: 200px;
-    padding: 10px;
-    padding-right: 100px;
-    margin: 116px auto 0;
+
+    section {
+        min-height: 200px;
+        margin: 116px auto 0;
+
+        .content {
+            box-sizing: border-box;
+            display: block;
+            width: 750px;
+            padding: 10px;
+            margin: 0 auto;
+            position: relative;
+        }
+    }
 }

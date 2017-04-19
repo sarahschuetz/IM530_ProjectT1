@@ -1,12 +1,24 @@
 <template>
     <div>
         <section>
-            <h1>Welcome home, Sarah S.!</h1>
-            <p>You are a student at FH Hagenberg.</p>
+            <div class="content">
+                <h1>Welcome home, Sarah S.!</h1>
+                <p>You are a student at FH Hagenberg.</p>
+            </div>
+        </section>
+        <section class="section-pink">
+            <div class="content">
+                <img src="~static/img/cats-XX.png" alt="mystery cat" />
+                <h2>Oh no! Look what happend!?</h2>
+                <p>One of the cats peed on the carpet in the livingroom.</p>
+                <p>Who could it have been?</p>
+            </div>
         </section>
         <section>
-            <House/>
-            <p v-if="$store.state.currentRoom != null">{{ location }}</p>
+            <div class="content">
+                <h2 v-if="$store.state.currentRoom != null" class="center-text">{{ location }}</h2>
+                <House/>
+            </div>
         </section>
     </div>
 </template>
@@ -23,7 +35,6 @@
 
         layout: 'chat',
         beforeMount: function() {
-
 
             let numberOfCats = Math.round(Math.random() * 3) + 3;
 
@@ -81,5 +92,58 @@
 // --------------------------------------------------
 
 <style lang="scss" scoped>
+
+    @import '~assets/scss/variables';
+    
+    section {
+        
+        h1 {
+            font-size: 30px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        &.section-pink {
+            background-color: lighten($pink, 10%);
+            position: relative;
+
+            $triangleHeight: 20;
+
+            &::before, &::after {
+                content: '';
+                width: 100%;
+                height: #{$triangleHeight}px;
+                display: block;
+                position: absolute;
+                background-size: 30px #{$triangleHeight}px;
+            }
+
+            &::before {
+                top: -#{$triangleHeight}px;
+                background-image: url('/img/triangle-up.png');
+            }
+
+            &::after {
+                bottom: -#{$triangleHeight}px;
+                background-image: url('/img/triangle-down.png');
+            }
+
+            .content {
+                padding-left: 270px;
+                min-height: 260px;
+
+                img {
+                    $imgSize: 200;
+
+                    height: #{$imgSize}px;
+                    position: absolute;
+                    top: calc(50% - #{$imgSize / 2}px);
+                    left: 0;
+                }
+            }
+        }
+    }
 
 </style>

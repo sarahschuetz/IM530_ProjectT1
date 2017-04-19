@@ -29,6 +29,10 @@
 
 // --------------------------------------------------
 
-<style lang="sass">
+<style lang="scss" scoped>
+    
+    main {
+        padding-bottom: 300px;
+    }
 
 </style>
