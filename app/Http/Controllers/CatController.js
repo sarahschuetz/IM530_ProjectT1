@@ -69,11 +69,12 @@ class CatController {
 
         let params = request.all()
         let message = params.message
+        let apiaiKey = params.apiaiKey
         let cat = params.cat
         let scenario = {'room': 'in the living room'}
 
         // talk with specific cat
-        let req = Apiai(cat.apiaiKey).textRequest(message, {
+        let req = Apiai(apiaiKey).textRequest(message, {
             // TODO: use correct session-id
             sessionId : 'sessionId',
             originalRequest : {
