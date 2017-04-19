@@ -58,7 +58,7 @@ class WebhookController {
 
     * get_crime () {
         let params = request.all()
-        let room = params['originalRequest']['data']['scenario']['crime']
+        let crime = params['originalRequest']['data']['scenario']['crime']
 
         let speech = crime + 'happened.'
 
