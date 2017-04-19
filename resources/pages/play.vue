@@ -38,6 +38,10 @@
                 for(let cat of result[0].data) {
                     this.catChangesRoom(cat)();
                 }
+
+                // commit state to database for AIP.AI Webhook
+                Axios.post('/api/scenario/create', this.$store.state);
+
             }).catch(function(err){
                 console.log(err);
             });
