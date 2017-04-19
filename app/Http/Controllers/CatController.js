@@ -2,6 +2,7 @@
 
 let Apiai = require('apiai')
 let Cat = use('App/Model/Cat')
+let Room = use('App/Model/Room')
 
 
 class CatController {
@@ -17,8 +18,8 @@ class CatController {
     }
 
     * get (request, response) {
-        let name = request.param('name')
-        let cat = yield Cat.findBy({'name' : name})
+        let id = request.param('id')
+        let cat = yield Cat.findBy('_id', id)
 
         response.json(cat)
     }
@@ -36,7 +37,30 @@ class CatController {
         }
 
         response.send(cats)
+    }
 
+    * setActualRoom (request, response) {
+        let room_name = request.param('room')
+        let room = yield Room.findBy({'name': room_name})
+
+        let id = request.param('id')
+        let cat = yield Cat.findBy('_id', id)
+
+        cat.actual_room = room
+
+        yield cat.save()
+    }
+
+    * setCrimeRoom (request, response) {
+        let room_name = request.param('room')
+        let room = yield Room.findBy({'name': room_name})
+
+        let id = request.param('id')
+        let cat = yield Cat.findBy('_id', id)
+
+        cat.crime_room = room
+
+        yield cat.save()
     }
 
     * talk (request, response) {

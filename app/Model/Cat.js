@@ -1,18 +1,3 @@
-/*
-let Random = require('mongoose-simple-random')
-
-let catSchema = Mongoose.Schema({
-    name: String,
-    age: Number,
-    apiai: String,
-    counter_guilty: Number,
-    counter_accused: Number
-});
-
-catSchema.plugin(Random)
-
-module.exports = Mongoose.model('Cat', catSchema) */
-
 'use strict'
 
 let LucidMongo = use('LucidMongo')
@@ -21,6 +6,14 @@ class Cat extends LucidMongo {
 
     static get primaryKey () {
         return '_id'
+    }
+
+    setActualRoom(actual_room) {
+        return actual_room;
+    }
+
+    setCrimeRoom(crime_room) {
+        return crime_room;
     }
 
 }
