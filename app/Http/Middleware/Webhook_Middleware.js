@@ -15,7 +15,11 @@ class Webhook {
         let params = request.all()
         let query = params['result']['resolvedQuery']
 
-        this.check_query_constants(query)
+        for (var i = 0; i < query_constants.name_const.length; i++) {
+            if(query.includes(query_constants.name_const[i])){
+                yield WebhookController.get_name(request,response)
+            }
+        }
 
         if(query.includes(query_constants.actual_room_const[0])){
             yield WebhookController.get_actual_room(request,response)
@@ -34,11 +38,7 @@ class Webhook {
 
     * check_query_constants (query) {
 
-        for (var i = 0; i < query_constants.name_const.length; i++) {
-            if(query.includes(query_constants.name_const[i])){
-                yield WebhookController.get_name(request,response)
-            }
-        }
+
 
     }
 
