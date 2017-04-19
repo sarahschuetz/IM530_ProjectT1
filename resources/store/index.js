@@ -8,7 +8,8 @@ const store = new Vuex.Store({
         allCats: [],
         activeCat: null,
         rooms: [],
-        currentRoom: null
+        currentRoom: null,
+        scenarioId: null
     },
 
     actions: {
@@ -44,23 +45,32 @@ const store = new Vuex.Store({
         },
         sendMessage: function(context, data) {
             context.commit('addMessage', {message: data.message, cat: data.cat, type: 'user'});
-            Axios.post('/api/cat/talk', {
-                apiaiKey: data.cat.apiai,
-                message: data.message,
-                cat: data.cat
-            })
-            .then((result) => {
-                context.commit('addMessage', {message: result.data, cat: data.cat, type: 'cat'});
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+
+            if(data.scenarioId) {
+                Axios.post('/api/cat/talk', {
+                    apiaiKey: data.cat.apiai,
+                    message: data.message,
+                    cat: data.cat,
+                    scenarioId: data.scenarioId
+                })
+                .then((result) => {
+                    context.commit('addMessage', {message: result.data, cat: data.cat, type: 'cat'});
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+            } else {
+                context.commit('addMessage', {message: 'Sorry, I\'m not ready yet..' , cat: data.cat, type: 'cat'});
+            }
         },
         changeRoom: function(context, roomName) {
             context.commit('setCurrentRoom', roomName);
         },
         catChangesRoom: function(context, cat) {
             context.commit('catChangesRoom', cat);
+        },
+        setScenarioId: function(context, id) {
+            context.commit('setScenarioId', id);
         }
     },
     
@@ -136,6 +146,9 @@ const store = new Vuex.Store({
 
                 state.rooms[room].cats.push(cat);
             }
+        },
+        setScenarioId: function(state, id) {
+            state.scenarioId = id;
         }
         // setOwner: function(state, data) {
         //     state.owner = data;

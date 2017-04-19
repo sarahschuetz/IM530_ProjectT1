@@ -51,7 +51,11 @@
                 }
 
                 // commit state to database for AIP.AI Webhook
-                Axios.post('/api/scenario/create', this.$store.state);
+                Axios.post('/api/scenario/create', this.$store.state).then(
+                    (result) => {
+                        this.$store.dispatch('setScenarioId', result.data);
+                    }
+                );
 
             }).catch(function(err){
                 console.log(err);
