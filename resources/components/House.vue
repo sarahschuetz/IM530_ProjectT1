@@ -74,7 +74,7 @@
 
     img {
         display: block;
-        width: 80vw;
+        width: 100%;
         height: auto;
     }
 
