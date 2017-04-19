@@ -15,7 +15,7 @@
             styling:  function() {
                 return {
                     backgroundColor: this.cat.color,
-                    backgroundImage: 'url(/img/cats-06.png)',
+                    backgroundImage: 'url(/img/' + this.cat.img + ')',
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: '5px 8px'
