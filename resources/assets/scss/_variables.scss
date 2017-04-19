@@ -20,3 +20,22 @@ $hazel: #FCB69F;
 $oreo: #99D8F2;
 $waffels: #A8EDEA;
 $whiskers: #B1F4CF;
+
+
+// ---------------------------
+// ---------- SIZES ----------
+// ---------------------------
+
+$screen-xs-min: 320; // small phones (iPhone SE)
+$screen-xs-max: 374;
+
+$screen-sm-min: 375; // larger phones (iPhone 7 / 7S)
+$screen-sm-max: 767;
+
+$screen-md-min: 768; // Tablet
+$screen-md-max: 991;
+
+$screen-lg-min: 992; // smaller screens
+$screen-lg-min: 1199;
+
+$screen-xl-min: 1200; // large screens
