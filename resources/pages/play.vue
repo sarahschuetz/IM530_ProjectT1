@@ -6,7 +6,7 @@
         </section>
         <section>
             <House/>
-            <p>{{ location }}</p>
+            <p v-if="$store.state.currentRoom != null">{{ location }}</p>
         </section>
     </div>
 </template>
@@ -15,14 +15,32 @@
 
 <script>
 
-    import Vuex from 'vuex';
+    import Axios from 'axios';
     import House from '~components/House.vue';
+    import Vuex from 'vuex';
 
     export default {
 
         layout: 'chat',
-        mounted: function() {
-            this.$store.dispatch('loadCats');
+        beforeMount: function() {
+
+
+            let numberOfCats = Math.round(Math.random() * 3) + 3;
+
+            let cats = Axios.get('/api/cats/random/' + numberOfCats);
+            let rooms = Axios.get('/api/rooms');
+
+            Promise.all([cats, rooms]).then((result) => {
+
+                this.$store.dispatch('loadCats', result[0].data);
+                this.$store.dispatch('loadRooms', result[1].data);
+
+                for(let cat of result[0].data) {
+                    this.catChangesRoom(cat)();
+                }
+            }).catch(function(err){
+                console.log(err);
+            });
         },
         components: {
             House
@@ -32,15 +50,24 @@
                 
                 let location = 'You\'re ';
 
-                if(this.$store.state.currentLocation == 'balcony') {
+                if(this.$store.state.currentRoom.name == 'balcony') {
                     location += 'on';
                 } else {
                     location += 'in';
                 }
 
-                location += ' the ' + this.$store.state.currentLocation + '.';
+                location += ' the ' + this.$store.state.currentRoom.name + '.';
 
                 return location;
+            }
+        },
+        methods: {
+            catChangesRoom: function(cat) {
+                return () => {
+                    this.$store.dispatch('catChangesRoom', cat);
+                    let sleepingTime = Math.round(Math.random() * 15 + 4) * 1000;
+                    setTimeout(this.catChangesRoom(cat), sleepingTime);
+                }
             }
         }
     }

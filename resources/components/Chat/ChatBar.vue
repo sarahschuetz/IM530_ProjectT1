@@ -1,7 +1,7 @@
 <template>
     <div class="chat-bar">
         <logo/>
-        <cat-icon class="icon" v-for="cat in $store.state.availableCats" :key="cat.id" :cat="cat"/>
+        <cat-icon class="icon" v-for="cat in availableCats" :key="cat._id" :cat="cat"/>
     </div>
 </template>
 
@@ -16,6 +16,15 @@
         components: {
             Logo,
             CatIcon
+        },
+        computed: {
+            availableCats: function() {
+                if(this.$store.state.currentRoom) {
+                    let cats = []; // TODO: check that activeCat is not available
+                    return this.$store.state.currentRoom.cats;
+                }  
+                return [];        
+            }
         }
     }
     
