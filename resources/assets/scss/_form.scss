@@ -1,0 +1,21 @@
+@import 'variables';
+
+form {
+    input {
+        box-sizing: border-box;
+        padding: 8px 12px;
+        background-color: $white; 
+        border: 2px solid $pink;
+        color: $black;
+        font-size: 20px;
+        height: 45px;
+
+        &::placeholder {
+            color: $grey-placeholder;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

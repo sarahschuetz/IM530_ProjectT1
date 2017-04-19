@@ -20,6 +20,19 @@
                 <House/>
             </div>
         </section>
+        <section class="small-margin">
+            <div class="content">
+                <h2 class="center-text">Who do you think is guilty?</h2>
+                <div class="input center-block">
+                    <form>
+                        <input />
+                        <button type="submit" class="btn filled-pink icon">
+                            <i class="material-icons">&#xE163;</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -111,6 +124,10 @@
             font-size: 24px;
         }
 
+        &.small-margin {
+            margin-top: 40px;
+        }
+
         &.section-pink {
             background-color: lighten($pink, 10%);
             position: relative;
@@ -149,6 +166,16 @@
                     left: 0;
                 }
             }
+        }
+
+        .input {
+            width: 286px;
+
+            input {
+                float: left;
+                border-right: none;
+            }
+            
         }
     }
 

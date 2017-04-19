@@ -6,7 +6,7 @@
         </main>
         <chat-bar/>
         <page-footer text="Have fun!"/>
-        <chat-window/>
+        <chat-window class="front"/>
     </div>
 </template>
 
@@ -35,7 +35,11 @@
 <style lang="scss" scoped>
     
     main {
-        padding-bottom: 300px;
+        padding-bottom: 100px;
     }
+
+    .front {
+        z-index: 100;
+    }    
 
 </style>
