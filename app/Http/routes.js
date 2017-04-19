@@ -25,6 +25,7 @@ Route.get('/api/cats/random/:count', 'CatController.getRandom')
 Route.post('/api/cat/talk', 'CatController.talk')
 Route.put('/api/cat/:id/setActualRoom/:room', 'CatController.setActualRoom')
 Route.put('/api/cat/:id/setCrimeRoom/:room', 'CatController.setCrimeRoom')
+Route.put('/api/cat/:id/setCrimeActivity/:activity', 'CatController.setCrimeActivity')
 
 // 'RoomController' - Routes
 Route.get('/api/rooms', 'RoomController.getAll')

@@ -65,6 +65,18 @@ class CatController {
         response.status(200).send('Updated.')
     }
 
+    * setCrimeActivity (request, response) {
+        let activity = request.param('activity')
+
+        let id = request.param('id')
+        let cat = yield Cat.findBy('_id', id)
+
+        cat.crime_activity = activity
+
+        yield cat.save()
+        response.status(200).send('Updated.')
+    }
+
     * talk (request, response) {
 
         let params = request.all()

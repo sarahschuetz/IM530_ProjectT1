@@ -43,9 +43,22 @@ class WebhookController {
         })
     }
 
-    * get_crime_location (request, response) {
+    * get_crime (request, response) {
         let params = request.all()
-        let room = params['originalRequest']['data']['scenario']['room']
+        let crime = params['originalRequest']['data']['scenario']['crime']
+
+        let speech = crime + 'happened.'
+
+        response.json({
+            speech: speech,
+            source: "purr-purr-purr-app",
+            displayText: speech
+        })
+    }
+
+    * get_crime_room (request, response) {
+        let params = request.all()
+        let room = params['originalRequest']['data']['scenario']['crime_room']
 
         let speech = 'I was ' + room + '.'
 
@@ -56,11 +69,11 @@ class WebhookController {
         })
     }
 
-    * get_crime () {
+    * get_crime_activity (request, response) {
         let params = request.all()
-        let crime = params['originalRequest']['data']['scenario']['crime']
+        let crime = params['originalRequest']['data']['scenario']['crime_activity']
 
-        let speech = crime + 'happened.'
+        let speech = 'I did' + crime + '.'
 
         response.json({
             speech: speech,

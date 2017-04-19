@@ -6,7 +6,8 @@ let query_constants = {
     'actual_room_const': ['room', 'where are you', 'actual location', 'location'],
     'age_const': ['old', 'age'],
     'crime_const': ['happened'],
-    'crime_room_const': ['room', 'location', 'where were you', 'where have you been']
+    'crime_room_const': ['room', 'location', 'where were you', 'where have you been'],
+    'crime_activity_const': ['did you do', 'have you done', 'were you doing']
 }
 
 class Webhook {
@@ -21,21 +22,15 @@ class Webhook {
             }
         }
 
-        for (var actual_room_const of query_constants.actual_room_const) {
-            if(query.includes(actual_room_const)){
-                yield WebhookController.get_actual_room(request,response)
-            }
-        }
-
-        for (var crime_room_const of query_constants.crime_room_const) {
-            if(query.includes(crime_room_const)){
-                yield WebhookController.get_crime_room(request,response)
-            }
-        }
-
         for (var age_const of query_constants.age_const) {
             if(query.includes(age_const)){
                 yield WebhookController.get_age(request,response)
+            }
+        }
+
+        for (var actual_room_const of query_constants.actual_room_const) {
+            if(query.includes(actual_room_const)){
+                yield WebhookController.get_actual_room(request,response)
             }
         }
 
@@ -45,13 +40,19 @@ class Webhook {
             }
         }
 
+        for (var crime_room_const of query_constants.crime_room_const) {
+            if(query.includes(crime_room_const)){
+                yield WebhookController.get_crime_room(request,response)
+            }
+        }
+
+        for (var crime_activity_const of query_constants.crime_activity_const) {
+            if(query.includes(crime_activity_const)){
+                yield WebhookController.get_crime_activity(request,response)
+            }
+        }
+
         yield next
-    }
-
-    * check_query_constants (query) {
-
-
-
     }
 
 }
