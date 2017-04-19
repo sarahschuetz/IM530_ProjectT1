@@ -29,21 +29,77 @@ class ScenarioController {
     * createScenario (request, response) {
         let params = request.all()
 
-        let test_room = 'kitchen'
-        let test_person = 'Sarah'
-        let test_crime = 'Ate the cake.'
+        console.log(JSON.stringify(params))
+
+        let person = params['owner']
+        let all_cats = params['allCats']
+        let room_data = params['rooms']
+
+        let test_crime = 'Peed on the floor.'
         let test_guiltycat = 'Whiskers'
+        let test_room = 'living room'
 
         var scenario = new Scenario()
         scenario.guilty_cat = test_guiltycat
         scenario.crime = test_crime
-        scenario.room = test_room
-        scenario.person = test_person
-        scenario.all_cats = [{cat: 'Whiskers'},{cat: 'Pumpkin'},{cat: 'Oreo'},{cat: 'Waffles'}]
+        scenario.crime_room = test_room
+
+        scenario.person = person
+        scenario.all_cats = all_cats
+        scenario.room_data = room_data
 
         yield scenario.save()
-        response.status(201).send('Created')
+        response.status(201).json(scenario._id)
     }
+
+    /*
+    * setActualRoomForCat (request, response) {
+        let params = request.all()
+        let room = params['room']
+        let cat = params['cat']
+
+        let room_name = request.param('room')
+        let room = yield Room.findBy({'name': room_name})
+
+        let id = cat._id //request.param('id')
+        let cat = yield Cat.findBy('_id', id)
+
+        cat.actual_room = room
+
+        //yield cat.save()
+        response.status(200).send('Updated.')
+    }
+
+    * setCrimeRoomForCat (request, response) {
+        let params = request.all()
+        let room = params['room']
+        let cat = params['cat']
+
+        let room_name = request.param('room')
+        let room = yield Room.findBy({'name': room_name})
+
+        let id = cat._id
+        let cat = yield Cat.findBy('_id', id)
+
+        cat.crime_room = room
+
+        //yield cat.save()
+        response.status(200).send('Updated.')
+    }
+
+    * setCrimeActivityForCat (request, response) {
+        let params = request.all()
+        let activity = params['activity']//request.param('activity')
+        let cat = params['cat']
+
+        let id = cat._id
+        let cat = yield Cat.findBy('_id', id)
+
+        cat.crime_activity = activity
+
+        //yield cat.save()
+        response.status(200).send('Updated.')
+    } */
 
 }
 

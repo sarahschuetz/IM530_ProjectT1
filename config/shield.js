@@ -83,7 +83,7 @@ module.exports = {
   csrf: {
     enable: true,
     methods: ['POST', 'PUT', 'DELETE'],
-    filterUris: ['/webhook', '/api/cat/:id/setActualRoom/:room', '/api/cat/:id/setCrimeRoom/:room', '/api/scenario/create'],
+    filterUris: ['/webhook', '/api/scenario/:id/setActualRoomForCat', '/api/scenario/:id/setCrimeRoomForCat', '/api/scenario/:id/setCrimeActivityForCat', '/api/scenario/create'],
     compareHostAndOrigin: true
   }
 

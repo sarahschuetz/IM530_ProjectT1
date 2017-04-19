@@ -39,56 +39,18 @@ class CatController {
         response.send(cats)
     }
 
-    * setActualRoom (request, response) {
-        let room_name = request.param('room')
-        let room = yield Room.findBy({'name': room_name})
-
-        let id = request.param('id')
-        let cat = yield Cat.findBy('_id', id)
-
-        cat.actual_room = room
-
-        yield cat.save()
-        response.status(200).send('Updated.')
-    }
-
-    * setCrimeRoom (request, response) {
-        let room_name = request.param('room')
-        let room = yield Room.findBy({'name': room_name})
-
-        let id = request.param('id')
-        let cat = yield Cat.findBy('_id', id)
-
-        cat.crime_room = room
-
-        yield cat.save()
-        response.status(200).send('Updated.')
-    }
-
-    * setCrimeActivity (request, response) {
-        let activity = request.param('activity')
-
-        let id = request.param('id')
-        let cat = yield Cat.findBy('_id', id)
-
-        cat.crime_activity = activity
-
-        yield cat.save()
-        response.status(200).send('Updated.')
-    }
-
     * talk (request, response) {
 
         let params = request.all()
         let message = params.message
         let apiaiKey = params.apiaiKey
         let cat = params.cat
-        let scenario = {'room': 'in the living room'}
+        let scenario = {'id': 'ab123asfo14safd', 'room': 'in the living room'}
 
         // talk with specific cat
         let req = Apiai(apiaiKey).textRequest(message, {
             // TODO: use correct session-id
-            sessionId : 'sessionId',
+            sessionId : scenario.id,
             originalRequest : {
                 source : 'purr-purr-purr',
                 data : {
