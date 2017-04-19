@@ -47,7 +47,7 @@ class WebhookController {
         let params = request.all()
         let crime = params['originalRequest']['data']['scenario']['crime']
 
-        let speech = crime + 'happened.'
+        let speech = crime + ' happened.'
 
         response.json({
             speech: speech,
@@ -73,7 +73,7 @@ class WebhookController {
         let params = request.all()
         let crime = params['originalRequest']['data']['scenario']['crime_activity']
 
-        let speech = 'I did' + crime + '.'
+        let speech = 'I did ' + crime + '.'
 
         response.json({
             speech: speech,

@@ -23,9 +23,6 @@ Route.get('/api/cats', 'CatController.getAll')
 Route.get('/api/cat/:id', 'CatController.get')
 Route.get('/api/cats/random/:count', 'CatController.getRandom')
 Route.post('/api/cat/talk', 'CatController.talk')
-Route.put('/api/cat/:id/setActualRoom/:room', 'CatController.setActualRoom')
-Route.put('/api/cat/:id/setCrimeRoom/:room', 'CatController.setCrimeRoom')
-Route.put('/api/cat/:id/setCrimeActivity/:activity', 'CatController.setCrimeActivity')
 
 // 'RoomController' - Routes
 Route.get('/api/rooms', 'RoomController.getAll')
@@ -45,6 +42,9 @@ Route.get('/api/crime/random', 'CrimeController.getRandom')
 Route.get('/api/scenarios', 'ScenarioController.getAll')
 Route.get('/api/scenario/:id', 'ScenarioController.get')
 Route.post('/api/scenario/create', 'ScenarioController.createScenario')
+Route.put('/api/scenario/:id/setActualRoomForCat', 'ScenarioController.setActualRoomForCat')
+Route.put('/api/scenario/:id/setCrimeRoomForCat', 'ScenarioController.setCrimeRoomForCat')
+Route.put('/api/scenario/:id/setCrimeActivityForCat', 'ScenarioController.setCrimeActivityForCat')
 
 // 'StatisticController' - Routes
 Route.get('/api/save/:id', 'StatisticController.saveGame')
