@@ -30,11 +30,37 @@ class WebhookController {
         })
     }
 
-    * get_room (request, response) {
+    * get_actual_room (request, response) {
         let params = request.all()
         let room = params['originalRequest']['data']['scenario']['room']
 
         let speech = 'I am ' + room + '.'
+
+        response.json({
+            speech: speech,
+            source: "purr-purr-purr-app",
+            displayText: speech
+        })
+    }
+
+    * get_crime_location (request, response) {
+        let params = request.all()
+        let room = params['originalRequest']['data']['scenario']['room']
+
+        let speech = 'I was ' + room + '.'
+
+        response.json({
+            speech: speech,
+            source: "purr-purr-purr-app",
+            displayText: speech
+        })
+    }
+
+    * get_crime () {
+        let params = request.all()
+        let room = params['originalRequest']['data']['scenario']['crime']
+
+        let speech = crime + 'happened.'
 
         response.json({
             speech: speech,
