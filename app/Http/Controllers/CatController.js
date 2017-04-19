@@ -49,6 +49,7 @@ class CatController {
         cat.actual_room = room
 
         yield cat.save()
+        response.status(200).send('Updated.')
     }
 
     * setCrimeRoom (request, response) {
@@ -61,6 +62,7 @@ class CatController {
         cat.crime_room = room
 
         yield cat.save()
+        response.status(200).send('Updated.')
     }
 
     * talk (request, response) {

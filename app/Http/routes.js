@@ -40,6 +40,11 @@ Route.get('/api/crimes', 'CrimeController.getAll')
 Route.get('/api/crime/:id', 'CrimeController.get')
 Route.get('/api/crime/random', 'CrimeController.getRandom')
 
+// 'ScenarioController' - Routes
+Route.get('/api/scenarios', 'ScenarioController.getAll')
+Route.get('/api/scenario/:id', 'ScenarioController.get')
+Route.post('/api/scenario/create', 'ScenarioController.createScenario')
+
 // 'StatisticController' - Routes
 Route.get('/api/save/:id', 'StatisticController.saveGame')
 
