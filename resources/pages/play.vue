@@ -69,7 +69,7 @@
             catChangesRoom: function(cat) {
                 return () => {
                     this.$store.dispatch('catChangesRoom', cat);
-                    let sleepingTime = Math.round(Math.random() * 15 + 4) * 1000;
+                    let sleepingTime = Math.round(Math.random() * 50 + 10) * 1000;
                     setTimeout(this.catChangesRoom(cat), sleepingTime);
                 }
             }
