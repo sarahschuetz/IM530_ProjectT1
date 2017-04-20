@@ -38,7 +38,7 @@ class WebhookController {
 
         for (var scenarioCat of all_cats) {
             if (scenarioCat._id == cat._id) {
-                room = scenarioCat.actual_room.preposition + scenarioCat.actual_room.name
+                room = scenarioCat.actual_room.preposition + ' ' + scenarioCat.actual_room.name
             }
         }
 
@@ -72,7 +72,7 @@ class WebhookController {
 
         for (var scenarioCat of all_cats) {
             if (scenarioCat._id == cat._id) {
-                room = scenarioCat.crime_room.preposition + scenarioCat.crime_room.name
+                room = scenarioCat.crime_room.preposition + ' ' + scenarioCat.crime_room.name
             }
         }
 
