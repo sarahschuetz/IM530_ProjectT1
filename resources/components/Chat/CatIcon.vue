@@ -1,7 +1,7 @@
 <template>
     <div class="cat-icon"
-         v-on:click="$store.dispatch('startChat', {new: cat, current: $store.state.activeCat})"
-         v-bind:style="styling"></div>
+         @:click="$store.dispatch('startChat', {new: cat, current: $store.state.activeCat})"
+         :style="styling"></div>
     </div>
 </template>
 
