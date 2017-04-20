@@ -42,7 +42,7 @@ class WebhookController {
             }
         }
 
-        let speech = 'I am ' + room + '.'
+        let speech = JSON.stringify(all_cats) //'I am ' + room + '.'
 
         response.json({
             speech: speech,
