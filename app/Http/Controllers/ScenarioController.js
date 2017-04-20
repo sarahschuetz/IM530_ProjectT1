@@ -28,9 +28,6 @@ class ScenarioController {
 
     * createScenario (request, response) {
         let params = request.all()
-
-        console.log(JSON.stringify(params))
-
         let person = params['owner']
         let all_cats = params['allCats']
         let room_data = params['rooms']
