@@ -116,6 +116,20 @@ class ScenarioController {
         response.status(200).send('Updated.')
     }
 
+    * guessGuiltyCat (request, response) {
+        let params = request.all()
+        let id = request.param('id')
+        let cat = params['cat']
+
+        let scenario = yield Scenario.findBy('_id', id)
+
+        if(cat._id == scenario.guilty_cat._id){
+            response.send(true)
+        } else {
+            response.send(false)
+        }
+    }
+
     * deleteScenario (request, response) {
         let id = request.param('id')
         let scenario = yield Scenario.findBy('_id', id)
