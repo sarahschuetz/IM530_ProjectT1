@@ -5,6 +5,7 @@
         <main>
             <nuxt/>
         </main>
+        <page-footer text="miow, miow, miow!"/>
     </div>
 </template>
 
@@ -14,11 +15,13 @@
 
     import Navigation from '~components/Navigation.vue'
     import Logo from '~components/Logo.vue'
+    import PageFooter from '~components/PageFooter.vue'
 
     export default {
         components: {
             Navigation,
-            Logo
+            Logo,
+            PageFooter
         }
     }
 

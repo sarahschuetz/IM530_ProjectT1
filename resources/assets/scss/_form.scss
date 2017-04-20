@@ -1,7 +1,7 @@
 @import 'variables';
 
 form {
-    input {
+    input, textarea {
         box-sizing: border-box;
         padding: 8px 12px;
         background-color: $white; 
@@ -17,5 +17,11 @@ form {
         &:focus {
             outline: none;
         }
+    }
+
+    textarea {
+        resize: none;
+        height: 200px;
+        font-size: 16px;
     }
 }

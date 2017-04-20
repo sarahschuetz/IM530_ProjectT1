@@ -23,7 +23,9 @@
     .footer {
         background-color: lighten($pink, 10%);
         padding: 40px 0;
-        position: relative;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
 
         $triangleHeight: 20;
         

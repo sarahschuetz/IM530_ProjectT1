@@ -35,7 +35,7 @@
 <style lang="scss" scoped>
     
     main {
-        padding-bottom: 100px;
+        padding-bottom: 220px;
     }
 
     .front {
