@@ -2,7 +2,7 @@
 
 let Apiai = require('apiai')
 let Cat = use('App/Model/Cat')
-let Room = use('App/Model/Room')
+let Scenario = use('App/Model/Scenario')
 
 
 class CatController {
@@ -45,17 +45,17 @@ class CatController {
         let message = params.message
         let apiaiKey = params.apiaiKey
         let cat = params.cat
-        let scenario = {'id': 'ab123asfo14safd', 'room': 'in the living room'}
+        let scenario_id = params.scenarioId
+        let currentScenario = yield Scenario.findBy('_id', scenario_id)
 
         // talk with specific cat
         let req = Apiai(apiaiKey).textRequest(message, {
-            // TODO: use correct session-id
-            sessionId : scenario.id,
+            sessionId : scenario_id,
             originalRequest : {
                 source : 'purr-purr-purr',
                 data : {
                     cat : cat,
-                    scenario : scenario
+                    scenario : currentScenario
                 }
             }
         })

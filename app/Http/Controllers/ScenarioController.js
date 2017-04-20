@@ -34,14 +34,14 @@ class ScenarioController {
         let person = params['owner']
         let all_cats = params['allCats']
         let room_data = params['rooms']
+        let crime = params['crime']
+        let guilty_cat = params['guiltyCat']
 
-        let test_crime = 'Peed on the floor.'
-        let test_guiltycat = 'Whiskers'
         let test_room = 'living room'
 
         var scenario = new Scenario()
-        scenario.guilty_cat = test_guiltycat
-        scenario.crime = test_crime
+        scenario.guilty_cat = guilty_cat
+        scenario.crime = crime
         scenario.crime_room = test_room
 
         scenario.person = person
@@ -52,24 +52,19 @@ class ScenarioController {
         response.status(201).json(scenario._id)
     }
 
-    /*
+
     * setActualRoomForCat (request, response) {
         let params = request.all()
-        let room = params['room']
+        let id = request.param('id')
         let cat = params['cat']
 
-        let room_name = request.param('room')
-        let room = yield Room.findBy({'name': room_name})
+        let scenario = yield Scenario.findBy('_id', id)
 
-        let id = cat._id //request.param('id')
-        let cat = yield Cat.findBy('_id', id)
-
-        cat.actual_room = room
 
         //yield cat.save()
         response.status(200).send('Updated.')
     }
-
+    /*
     * setCrimeRoomForCat (request, response) {
         let params = request.all()
         let room = params['room']
@@ -100,6 +95,15 @@ class ScenarioController {
         //yield cat.save()
         response.status(200).send('Updated.')
     } */
+
+    * deleteScenario (request, response) {
+        let id = request.param('id')
+        let scenario = yield Scenario.findBy('_id', id)
+
+        yield scenario.delete()
+
+        response.status(200).send('Deleted.')
+    }
 
 }
 
