@@ -32,7 +32,15 @@ class WebhookController {
 
     * get_actual_room (request, response) {
         let params = request.all()
-        let room = params['originalRequest']['data']['scenario']['room']
+        let cat = params['originalRequest']['data']['cat']
+        let all_cats = params['originalRequest']['data']['scenario']['all_cats']
+        let room = ''
+
+        for (var scenarioCat of all_cats) {
+            if (scenarioCat._id == cat._id) {
+                room = scenarioCat.actual_room.preposition + scenarioCat.actual_room.name
+            }
+        }
 
         let speech = 'I am ' + room + '.'
 
