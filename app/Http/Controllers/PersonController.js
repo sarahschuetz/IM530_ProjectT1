@@ -22,18 +22,13 @@ class PersonController {
     }
 
     * getRandom (request, response) {
-        let count = request.param('count')
         let people = yield Person.all()
-
         people = people.sort(function() {
-            return .5 - Math.random();
+            return .5 - Math.random()
         })
 
-        if(count < Person.count()) {
-            people = people.slice(0, count)
-        }
-
-        response.json(people)
+        let person = people.slice(0, 1)
+        response.json(person)
     }
 
 }

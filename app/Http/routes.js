@@ -26,17 +26,18 @@ Route.post('/api/cat/talk', 'CatController.talk')
 
 // 'RoomController' - Routes
 Route.get('/api/rooms', 'RoomController.getAll')
+Route.get('/api/room/random', 'RoomController.getRandom')
 Route.get('/api/room/:id', 'RoomController.get')
 
 // 'PersonController' - Routes
 Route.get('/api/people', 'PersonController.getAll')
+Route.get('/api/person/random', 'PersonController.getRandom')
 Route.get('/api/person/:id', 'PersonController.get')
-Route.get('/api/people/random', 'PersonController.getRandom')
 
 // 'CrimeController' - Routes
 Route.get('/api/crimes', 'CrimeController.getAll')
-Route.get('/api/crime/:id', 'CrimeController.get')
 Route.get('/api/crime/random', 'CrimeController.getRandom')
+Route.get('/api/crime/:id', 'CrimeController.get')
 
 // 'ScenarioController' - Routes
 Route.get('/api/scenarios', 'ScenarioController.getAll')

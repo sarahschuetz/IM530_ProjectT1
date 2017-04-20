@@ -22,18 +22,13 @@ class CrimeController {
     }
 
     * getRandom (request, response) {
-        let count = request.param('count')
         let crimes = yield Crime.all()
-
         crimes = crimes.sort(function() {
-            return .5 - Math.random();
+            return .5 - Math.random()
         })
 
-        if(count < Crime.count()) {
-            crimes = crimes.slice(0, count)
-        }
-
-        response.json(crimes)
+        let crime = crimes.slice(0, 1)
+        response.json(crime)
     }
 
 }

@@ -21,6 +21,16 @@ class RoomController {
         response.json(room)
     }
 
+    * getRandom (request, response) {
+        let rooms = yield Room.all()
+        rooms = rooms.sort(function() {
+            return .5 - Math.random()
+        })
+
+        let room = rooms.slice(0, 1)
+        response.json(room)
+    }
+
 }
 
 module.exports = new RoomController()
