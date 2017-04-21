@@ -27,7 +27,12 @@ class ActivityController {
             return .5 - Math.random()
         })
 
-        let activity = activities.slice(0, 1)
+        let activity = ''
+
+        for (var activity_data of activities) {
+            activity = activity_data
+            break
+        }
         response.json(activity)
     }
 

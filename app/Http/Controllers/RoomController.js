@@ -27,7 +27,12 @@ class RoomController {
             return .5 - Math.random()
         })
 
-        let room = rooms.slice(0, 1)
+        let room = ''
+
+        for (var room_data of rooms) {
+            room = room_data
+            break
+        }
         response.json(room)
     }
 
