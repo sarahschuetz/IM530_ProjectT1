@@ -96,7 +96,7 @@ class WebhookController {
 
         for (var scenarioCat of all_cats) {
             if (scenarioCat._id == cat._id) {
-                activity = scenarioCat.crime_activity
+                activity = scenarioCat.crime_activity.name
             }
         }
 
