@@ -48,9 +48,7 @@ Route.get('/api/activity/:id', 'ActivityController.get')
 Route.get('/api/scenarios', 'ScenarioController.getAll')
 Route.get('/api/scenario/:id', 'ScenarioController.get')
 Route.post('/api/scenario/create', 'ScenarioController.createScenario')
-Route.put('/api/scenario/:id/setActualRoomForCat', 'ScenarioController.setActualRoomForCat')
-Route.put('/api/scenario/:id/setCrimeRoomForCat', 'ScenarioController.setCrimeRoomForCat')
-Route.put('/api/scenario/:id/setCrimeActivityForCat', 'ScenarioController.setCrimeActivityForCat')
+Route.put('/api/scenario/:id/updateRooms', 'ScenarioController.updateRooms')
 Route.put('/api/scenario/:id/guessGuiltyCat', 'ScenarioController.guessGuiltyCat')
 
 // 'StatisticController' - Routes
