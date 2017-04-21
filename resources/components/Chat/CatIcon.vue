@@ -1,6 +1,6 @@
 <template>
     <div class="cat-icon"
-         @:click="$store.dispatch('startChat', {new: cat, current: $store.state.activeCat})"
+         @click="$store.dispatch('startChat', {new: cat, current: $store.state.activeCat})"
          :style="styling"></div>
     </div>
 </template>
