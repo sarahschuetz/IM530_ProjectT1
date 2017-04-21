@@ -24,7 +24,7 @@
             },
             percentage: function() {
                 if(this.absolute > 0) {
-                    return (this.value * 100 / this.absolute);
+                    return Math.round(this.value * 100 / this.absolute);
                 }
                 return 0;
             },
