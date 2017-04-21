@@ -68,7 +68,7 @@
                 this.$store.dispatch('setActivities', result[4].data);
 
                 for(let cat of result[0].data) {
-                    this.catChangesRoom(cat)();
+                    this.catChangesRoom(cat, false)();
 
                     const randomRoomIndex = Math.floor(Math.random() * this.$store.state.rooms.length);
                     cat.crime_room =  { // don't reference actual room to prevent circular references
@@ -111,12 +111,25 @@
             }
         },
         methods: {
-            catChangesRoom: function(cat) {
+            catChangesRoom: function(cat, updateDB) {
                 return () => {
                     this.$store.dispatch('catChangesRoom', cat);
+
+                    if(updateDB) {
+                        this.updateRoomsInDB();
+                    }
+
                     let sleepingTime = Math.round(Math.random() * 50 + 10) * 1000;
-                    setTimeout(this.catChangesRoom(cat), sleepingTime);
+                    setTimeout(this.catChangesRoom(cat, true), sleepingTime);
                 }
+            },
+            updateRoomsInDB: function() {
+                Axios.post('/api/' + this.$store.state.scenarioId + '/updateRooms', {
+                    rooms: this.$store.state.rooms
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
             }
         }
     }
