@@ -4,8 +4,8 @@
             <h1 class="center-text">Statistics</h1>
             <statistic v-for="cat in cats" key="cat._id" :cat="cat" :numberOfGames="numberOfGames" class="statistic" />
             <div class="legend">
-                <div class="accused">accused</div>
                 <div class="guilty">guilty</div>
+                <div class="accused">accused</div>
             </div>
         </div>
     </section>
@@ -87,13 +87,13 @@
                 }
             }
 
-            .accused {
+            .guilty {
                 &:before {
                     background-color: $pink;
                 }
             }
 
-            .guilty {
+            .accused {
                 &:before {
                     background-color: lighten($pink, 10);
                 }
