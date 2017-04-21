@@ -12,8 +12,7 @@ const store = new Vuex.Store({
         scenarioId: null,
         crime: null,
         guiltyCat: null,
-        owner: null,
-        activities: []
+        owner: null
     },
 
     actions: {
@@ -163,6 +162,13 @@ const store = new Vuex.Store({
             state.owner = owner;
         },
         setCrime: function(state, crime) {
+           
+            const roomIndex = Math.floor(Math.random() * state.rooms.length);
+            crime.location = { // don't reference actual room to prevent circular references
+                _id: state.rooms[roomIndex]._id,
+                name: state.rooms[roomIndex].name
+            };
+
             state.crime = crime;
         },
     }

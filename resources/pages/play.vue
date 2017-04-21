@@ -65,25 +65,31 @@
                 this.$store.dispatch('setRooms', result[1].data);
                 this.$store.dispatch('setOwner', result[2].data);
                 this.$store.dispatch('setCrime', result[3].data);
-                this.$store.dispatch('setActivities', result[4].data);
+
+                const activityArray = result[4].data;
 
                 for(let cat of result[0].data) {
                     this.catChangesRoom(cat, false)();
 
-                    const randomRoomIndex = Math.floor(Math.random() * this.$store.state.rooms.length);
-                    cat.crime_room =  { // don't reference actual room to prevent circular references
-                        _id: this.$store.state.rooms[randomRoomIndex]._id,
-                        name: this.$store.state.rooms[randomRoomIndex].name
+                    if(this.$store.state.guiltyCat._id == cat._id) { // cat is guilty
+                        cat.crime_room =  this.$store.state.crime.location;
+                    } else { // cat is not guilty
+                        const randomRoomIndex = Math.floor(Math.random() * this.$store.state.rooms.length);
+                        cat.crime_room =  { // don't reference actual room to prevent circular references
+                            _id: this.$store.state.rooms[randomRoomIndex]._id,
+                            name: this.$store.state.rooms[randomRoomIndex].name
+                        }
                     }
 
-                    const randomActivityIndex = Math.floor(Math.random() * this.$store.state.activities.length);
-                    cat.crime_activity = this.$store.state.activities[randomActivityIndex];
+                    const randomActivityIndex = Math.floor(Math.random() * activityArray.length);
+                    cat.crime_activity = activityArray[randomActivityIndex];
                 }
 
                 // commit state to database for AIP.AI Webhook
                 Axios.post('/api/scenario/create', this.$store.state).then(
                     (result) => {
                         this.$store.dispatch('setScenarioId', result.data);
+                        this.$store.dispatch('setActivities', activityArray);
                     }
                 );
 
@@ -124,7 +130,7 @@
                 }
             },
             updateRoomsInDB: function() {
-                Axios.post('/api/' + this.$store.state.scenarioId + '/updateRooms', {
+                Axios.post('/api/scenario/' + this.$store.state.scenarioId + '/updateRooms', {
                     rooms: this.$store.state.rooms
                 })
                 .catch((error) => {
