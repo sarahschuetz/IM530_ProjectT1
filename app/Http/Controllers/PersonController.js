@@ -27,7 +27,12 @@ class PersonController {
             return .5 - Math.random()
         })
 
-        let person = people.slice(0, 1)
+        let person = ''
+
+        for (var person_data of people) {
+            person = person_data
+            break
+        }
         response.json(person)
     }
 

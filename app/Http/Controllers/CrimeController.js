@@ -27,7 +27,12 @@ class CrimeController {
             return .5 - Math.random()
         })
 
-        let crime = crimes.slice(0, 1)
+        let crime = ''
+
+        for (var crime_data of crimes) {
+            crime = crime_data
+            break
+        }
         response.json(crime)
     }
 
