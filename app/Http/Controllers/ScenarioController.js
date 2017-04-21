@@ -33,7 +33,6 @@ class ScenarioController {
         let room_data = params['rooms']
         let crime = params['crime']
         let guilty_cat = params['guiltyCat']
-
         let crime_room = params['crime']['room']
 
         var scenario = new Scenario()
