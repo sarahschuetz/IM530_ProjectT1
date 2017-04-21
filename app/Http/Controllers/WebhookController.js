@@ -21,7 +21,7 @@ class WebhookController {
         let params = request.all()
         let catName = params['originalRequest']['data']['cat']['name']
 
-        let speech = 'I am ' + catName
+        let speech = 'I am ' + catName + '.'
 
         response.json({
             speech: speech,
@@ -55,9 +55,9 @@ class WebhookController {
 
     * get_crime (request, response) {
         let params = request.all()
-        let crime = params['originalRequest']['data']['scenario']['crime']
+        let crime = params['originalRequest']['data']['scenario']['crime']['name']
 
-        let speech = crime + ' happened.'
+        let speech = 'Someone ' + crime + '.'
 
         response.json({
             speech: speech,
@@ -115,7 +115,7 @@ class WebhookController {
         answers.append( 'I am ' + age + ' years old.')
         answers.append( age + ' long years.')
 
-        let speech = answers[Math.floor(Math.random() * answers.length)]
+        let speech = 'I am ' + age + ' years old.'
 
         response.json({
             speech: speech,
