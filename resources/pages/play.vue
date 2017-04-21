@@ -53,16 +53,31 @@
 
             let cats = Axios.get('/api/cats/random/' + numberOfCats);
             let rooms = Axios.get('/api/rooms');
-            // let owner = Axios.get('/api/owner/random');
-            // let crime = Axios.get('/api/crime/random');
+            let owner = Axios.get('/api/person/random');
+            let crime = Axios.get('/api/crime/random');
+            let activities = Axios.get('/api/activities');
 
-            Promise.all([cats, rooms]).then((result) => {
+            // wait for all, because state must be posted and
+            // stored when everything is set
+            Promise.all([cats, rooms, owner, crime, activities]).then((result) => {
 
-                this.$store.dispatch('loadCats', result[0].data);
-                this.$store.dispatch('loadRooms', result[1].data);
+                this.$store.dispatch('setCats', result[0].data);
+                this.$store.dispatch('setRooms', result[1].data);
+                this.$store.dispatch('setOwner', result[2].data);
+                this.$store.dispatch('setCrime', result[3].data);
+                this.$store.dispatch('setActivities', result[4].data);
 
                 for(let cat of result[0].data) {
                     this.catChangesRoom(cat)();
+
+                    const randomRoomIndex = Math.floor(Math.random() * this.$store.state.rooms.length);
+                    cat.crime_room =  { // don't reference actual room to prevent circular references
+                        _id: this.$store.state.rooms[randomRoomIndex]._id,
+                        name: this.$store.state.rooms[randomRoomIndex].name
+                    }
+
+                    const randomActivityIndex = Math.floor(Math.random() * this.$store.state.activities.length);
+                    cat.crime_activity = this.$store.state.activities[randomActivityIndex];
                 }
 
                 // commit state to database for AIP.AI Webhook

@@ -12,24 +12,28 @@ const store = new Vuex.Store({
         scenarioId: null,
         crime: null,
         guiltyCat: null,
-        owner: null
+        owner: null,
+        activities: []
     },
 
     actions: {
-        loadCats: function(context, cats) {
+        setCats: function(context, cats) {
             let randomIndex = Math.floor(Math.random() * cats.length);
             context.commit('setAllCats', cats);
             context.commit('setGuiltyCat', cats[randomIndex]);
         },
-        loadOwner: function(context, owner) {
+        setOwner: function(context, owner) {
             context.commit('setOwner', owner);
         },
-        loadCrime: function(context, crime) {
+        setCrime: function(context, crime) {
             context.commit('setCrime', crime);
         },
-        loadRooms: function(context, rooms) {
+        setRooms: function(context, rooms) {
             context.commit('setRooms', rooms);
             context.commit('setCurrentRoom', 'hallway');
+        },
+        setActivities: function(context, activities) {
+            context.commit('setActivities', activities);
         },
         startChat: function(context, cats) {
             context.commit('removeAvailableCat', cats.new);
@@ -113,6 +117,9 @@ const store = new Vuex.Store({
             if(roomIndex > -1) {
                 state.currentRoom = state.rooms[roomIndex];
             }
+        },
+        setActivities: function(state, activities) {
+            state.activities = activities;
         },
         catChangesRoom: function(state, cat) {
 
