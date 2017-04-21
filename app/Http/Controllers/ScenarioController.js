@@ -38,12 +38,12 @@ class ScenarioController {
         globalCat.counter_guilty = globalCat.counter_guilty + 1
         yield globalCat.save()
 
-        let test_room = 'living room'
+        let crime_room = params['crime']['room']
 
         var scenario = new Scenario()
         scenario.guilty_cat = guilty_cat
         scenario.crime = crime
-        scenario.crime_room = test_room
+        scenario.crime_room = crime_room
 
         scenario.person = person
         scenario.all_cats = all_cats
@@ -53,69 +53,13 @@ class ScenarioController {
         response.status(201).json(scenario._id)
     }
 
-
-    * setActualRoomForCat (request, response) {
+    * updateRooms (request, response) {
         let params = request.all()
         let id = request.param('id')
-        let cat = params['cat']
-        let actualRoom = params['room']
+        let rooms = params['rooms']
 
         let scenario = yield Scenario.findBy('_id', id)
-        let count = 0
-
-        for (var scenarioCat of scenario.all_cats) {
-            if(scenarioCat._id == cat._id){
-               break
-            }
-            count++
-        }
-
-        scenario.all_cats[count].actual_room = actualRoom
-
-        yield scenario.save()
-        response.status(200).send('Updated.')
-    }
-
-    * setCrimeRoomForCat (request, response) {
-        let params = request.all()
-        let id = request.param('id')
-        let cat = params['cat']
-        let crimeRoom = params['room']
-
-        let scenario = yield Scenario.findBy('_id', id)
-        let count = 0
-
-        for (var scenarioCat of scenario.all_cats) {
-            if(scenarioCat._id == cat._id){
-                break
-            }
-            count++
-        }
-
-        scenario.all_cats[count].crime_room = crimeRoom
-
-        yield scenario.save()
-        response.status(200).send('Updated.')
-    }
-
-    * setCrimeActivityForCat (request, response) {
-        let params = request.all()
-        let id = request.param('id')
-        let cat = params['cat']
-        let crimeActivity = params['crime_activity']
-
-        let scenario = yield Scenario.findBy('_id', id)
-        let count = 0
-
-        for (var scenarioCat of scenario.all_cats) {
-            if(scenarioCat._id == cat._id){
-                break
-            }
-            count++
-        }
-
-        scenario.all_cats[count].crime_activity = crimeActivity
-
+        scenario.room_data = rooms
         yield scenario.save()
         response.status(200).send('Updated.')
     }
