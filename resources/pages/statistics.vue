@@ -2,7 +2,7 @@
     <section>
         <div class="content">
             <h1 class="center-text">Statistics</h1>
-            <statistic v-for="cat in cats" key="cat._id" :cat="cat" class="statistic" />
+            <statistic v-for="cat in cats" key="cat._id" :cat="cat" :numberOfGames="numberOfGames" class="statistic" />
             <div class="legend">
                 <div class="accused">accused</div>
                 <div class="guilty">guilty</div>
@@ -38,6 +38,15 @@
                 console.error(error);
             });
         },
+        computed: {
+            numberOfGames: function() {
+                let counter = 0;
+                this.cats.forEach((cat) => {
+                    counter += cat.counter_guilty;
+                });
+                return counter;
+            }
+        }
     }
 
 </script>

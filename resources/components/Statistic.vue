@@ -2,8 +2,8 @@
     <div class="cat">
         <h2 class="center-text">{{ cat.name }}</h2>
         <img :src="catImg" :alt="cat.name"/>
-        <progress-bar class="bar" :value="10" :absolute="100" colorClass="guilty" :barSize="125"/>
-        <progress-bar class="bar" :value="30" :absolute="100" colorClass="accused" :barSize="125"/>
+        <progress-bar class="bar" :value="cat.counter_guilty" :absolute="numberOfGames" colorClass="guilty" :barSize="125"/>
+        <progress-bar class="bar" :value="cat.counter_accused" :absolute="numberOfGames" colorClass="accused" :barSize="125"/>
     </div>
 </template>
 
@@ -14,12 +14,9 @@
     import ProgressBar from '~components/ProgressBar'
 
     export default {
-        props: ['cat'],
+        props: ['cat', 'numberOfGames'],
         components: {
             ProgressBar
-        },
-        mounted: function() {
-            console.log(this.cat);
         },
         computed: {
             catImg: function() {

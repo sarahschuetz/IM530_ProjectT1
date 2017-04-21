@@ -23,11 +23,14 @@
                 return "progress " + this.colorClass;
             },
             percentage: function() {
-                return (this.value * 100 / this.absolute);
+                if(this.absolute > 0) {
+                    return (this.value * 100 / this.absolute);
+                }
+                return 0;
             },
             styling: function() {
                 return {
-                    width: this.barSize / this.absolute * this.percentage + 'px'
+                    width: this.barSize / 100 * this.percentage + 'px'
                 };
             }
         }
