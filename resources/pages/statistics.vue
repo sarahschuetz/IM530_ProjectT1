@@ -3,6 +3,10 @@
         <div class="content">
             <h1 class="center-text">Statistics</h1>
             <statistic v-for="cat in cats" key="cat._id" :cat="cat" class="statistic" />
+            <div class="legend">
+                <div class="accused">accused</div>
+                <div class="guilty">guilty</div>
+            </div>
         </div>
     </section>
 </template>
@@ -42,11 +46,49 @@
 
 <style lang="scss" scoped>
 
-    .statistic {
-        margin-bottom: 50px;
+    @import '~assets/scss/variables';
 
-        &:last-child {
-            margin-bottom: 250px;
+    .content {
+        padding-bottom: 200px;
+
+        .statistic {
+            margin-bottom: 50px;
+
+            &:last-child {
+                margin-bottom: 250px;
+            }
+        }
+
+        .legend {
+            width: 200px;
+            margin: 0 auto;
+            margin-bottom: 25px;
+
+            .accused, .guilty {
+                display: inline-block;
+                margin-right: 19px;
+
+                &:before {
+                    content: '';
+                    display: inline-block;
+                    width: 20px;
+                    height: 10px;
+                    background-color: #f00;
+                    margin-right: 10px;
+                }
+            }
+
+            .accused {
+                &:before {
+                    background-color: $pink;
+                }
+            }
+
+            .guilty {
+                &:before {
+                    background-color: lighten($pink, 10);
+                }
+            }
         }
     }
 

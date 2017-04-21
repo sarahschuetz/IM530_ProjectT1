@@ -1,11 +1,9 @@
 <template>
-    <div class="catBox">
-        <div class="cat">
-            <h2 class="center-text">{{ cat.name }}</h2>
-            <img :src="catImg" :alt="cat.name"/>
-            <progress-bar :value="5" :absolute="100" colorClass="guilty"/>
-            <progress-bar :value="100" :absolute="100" colorClass="accused"/>
-        </div>
+    <div class="cat">
+        <h2 class="center-text">{{ cat.name }}</h2>
+        <img :src="catImg" :alt="cat.name"/>
+        <progress-bar class="bar" :value="10" :absolute="100" colorClass="guilty" :barSize="125"/>
+        <progress-bar class="bar" :value="30" :absolute="100" colorClass="accused" :barSize="125"/>
     </div>
 </template>
 
@@ -39,22 +37,25 @@
     @import '~assets/scss/variables';
     @import '~assets/scss/helpers';
 
-    .catBox {
+    .cat {
         width: 33%;
         position: relative;
         float: left;
 
-        .cat {
+        img {
             margin: 0 auto;
-            max-width: 150px;
+            display: block;
+            width: 150px;
+            border-bottom: 2px $black solid;
+        }
 
-            img {
-                width: 100%;
-            }
+        h2 {
+            font-size: 20px;
+        }
 
-            h2 {
-                font-size: 20px;
-            }
+        .bar {
+            margin-top: 5px;
+            margin-left: 57px;
         }
 
     }

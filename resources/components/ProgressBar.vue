@@ -1,6 +1,6 @@
 <template>
     <div class="progressBar">
-        <div :class="classes" :style="styling"></div><div>{{ percentage }}</div>
+        <div :class="classes" :style="styling"></div><div>{{ percentage }}%</div>
     </div>
 </template>
 
@@ -11,7 +11,7 @@
     import ProgressBar from '~components/ProgressBar'
 
     export default {
-        props: ['value', 'absolute', 'colorClass'],
+        props: ['value', 'absolute', 'colorClass', 'barSize'],
         components: {
             ProgressBar
         },
@@ -23,11 +23,11 @@
                 return "progress " + this.colorClass;
             },
             percentage: function() {
-                return (this.value * 100 / this.absolute) + '%';
+                return (this.value * 100 / this.absolute);
             },
             styling: function() {
                 return {
-                    width: this.percentage
+                    width: this.barSize / this.absolute * this.percentage + 'px'
                 };
             }
         }
@@ -44,7 +44,7 @@
 
     .progressBar {
         width: 88%;
-        margin: 0 auto 5px;
+        margin: 0 auto;
 
         .progress {
             height: 20px;
