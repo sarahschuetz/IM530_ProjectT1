@@ -34,6 +34,10 @@ class ScenarioController {
         let crime = params['crime']
         let guilty_cat = params['guiltyCat']
 
+        let globalCat = yield Cat.findBy('_id', guilty_cat._id)
+        globalCat.counter_guilty = globalCat.counter_guilty + 1
+        yield globalCat.save()
+
         let test_room = 'living room'
 
         var scenario = new Scenario()
@@ -120,6 +124,10 @@ class ScenarioController {
         let params = request.all()
         let id = request.param('id')
         let cat = params['cat']
+
+        let globalCat = yield Cat.findBy('_id', cat._id)
+        globalCat.counter_accused = globalCat.counter_accused + 1
+        yield globalCat.save()
 
         let scenario = yield Scenario.findBy('_id', id)
 
