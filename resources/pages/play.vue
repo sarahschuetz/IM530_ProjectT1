@@ -94,7 +94,7 @@
                 );
 
             }).catch(function(err){
-                console.log(err);
+                console.error(err);
             });
         },
         data: function() {
@@ -143,7 +143,27 @@
                 });
             },
             accuseCat: function() {
-                alert(this.accusedCatName);
+                let cat = null;
+
+                for(let currentCat of this.$store.state.allCats) {
+                    if(this.accusedCatName.toLowerCase() == currentCat.name.toLowerCase()) {
+                        cat = currentCat;
+                    }
+                }
+
+                if(cat) {
+                    Axios.put('/api/scenario/' + this.$store.state.scenarioId + '/guessGuiltyCat', {
+                        cat: cat
+                    })
+                    .then((answer) => {
+                        alert(answer.data);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+                } else {
+                    alert("Cat not available!");
+                }
             }
         }
     }

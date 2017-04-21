@@ -41,9 +41,10 @@
         computed: {
             numberOfGames: function() {
                 let counter = 0;
-                this.cats.forEach((cat) => {
+
+                for(let cat of this.cats) {
                     counter += cat.counter_guilty;
-                });
+                }
                 return counter;
             }
         }

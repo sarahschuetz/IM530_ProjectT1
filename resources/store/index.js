@@ -78,7 +78,7 @@ const store = new Vuex.Store({
     
     mutations: {
         setAllCats: function(state, cats) {
-            for (let cat of cats) {
+            for(let cat of cats) {
                 cat.messages = [];
             }
             state.allCats = cats;
@@ -96,7 +96,7 @@ const store = new Vuex.Store({
             });
         },
         setRooms: function(state, rooms) {
-            for (let room of rooms) {
+            for(let room of rooms) {
                 room.cats = [];
             }
             state.rooms = rooms;
