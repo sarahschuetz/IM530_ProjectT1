@@ -24,8 +24,8 @@
             <div class="content">
                 <h2 class="center-text">Who do you think is guilty?</h2>
                 <div class="input center-block">
-                    <form>
-                        <input />
+                    <form @submit.prevent="accuseCat">
+                        <input v-model="accusedCatName"/>
                         <button type="submit" class="btn filled-pink icon">
                             <i class="material-icons">&#xE163;</i>
                         </button>
@@ -97,6 +97,11 @@
                 console.log(err);
             });
         },
+        data: function() {
+            return {
+                accusedCatName: ''
+            }
+        },
         components: {
             House
         },
@@ -130,12 +135,15 @@
                 }
             },
             updateRoomsInDB: function() {
-                Axios.post('/api/scenario/' + this.$store.state.scenarioId + '/updateRooms', {
+                Axios.put('/api/scenario/' + this.$store.state.scenarioId + '/updateRooms', {
                     rooms: this.$store.state.rooms
                 })
                 .catch((error) => {
                     console.error(error);
                 });
+            },
+            accuseCat: function() {
+                alert(this.accusedCatName);
             }
         }
     }
