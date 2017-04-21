@@ -115,7 +115,7 @@ class WebhookController {
         answers.append( 'I am ' + age + ' years old.')
         answers.append( age + ' long years.')
 
-        let speech = answers[Math.floor(Math.random() * answers.length)]
+        let speech = 'I am ' + age + ' years old.'
 
         response.json({
             speech: speech,
