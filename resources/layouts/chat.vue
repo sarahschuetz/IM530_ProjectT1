@@ -1,5 +1,6 @@
 <template>
     <div>
+        <logo/>
         <navigation/>
         <main>
             <nuxt/>
@@ -16,6 +17,7 @@
 
     import ChatBar from '~components/Chat/ChatBar.vue'
     import ChatWindow from '~components/Chat/ChatWindow.vue'
+    import Logo from '~components/Logo.vue'
     import Navigation from '~components/Navigation.vue'
     import PageFooter from '~components/PageFooter.vue'
 
@@ -23,6 +25,7 @@
         components: {
             ChatWindow,
             ChatBar,
+            Logo,
             Navigation,
             PageFooter
         }

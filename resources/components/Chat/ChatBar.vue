@@ -1,6 +1,5 @@
 <template>
     <div class="chat-bar">
-        <logo/>
         <cat-icon class="icon" v-for="cat in availableCats" :key="cat._id" :cat="cat"/>
     </div>
 </template>
@@ -9,12 +8,10 @@
 
 <script>
 
-    import Logo from '~components/Logo.vue';
     import CatIcon from '~components/Chat/CatIcon.vue';
 
     export default {
         components: {
-            Logo,
             CatIcon
         },
         computed: {
