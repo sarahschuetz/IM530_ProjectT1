@@ -72,13 +72,13 @@ class ScenarioController {
         globalGuiltyCat.counter_guilty = globalGuiltyCat.counter_guilty + 1
         yield globalGuiltyCat.save()
 
+        let correctAnswer = false
+
         if(cat._id == scenario.guilty_cat._id){
-            response.send(true)
+           correctAnswer = true
         }
 
-        if(cat._id != scenario.guilty_cat._id) {
-            response.send(false)
-        }
+        response.send(correctAnswer)
     }
 
     * deleteScenario (request, response) {
