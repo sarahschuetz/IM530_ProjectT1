@@ -52,7 +52,7 @@ Route.put('/api/scenario/:id/guessGuiltyCat', 'ScenarioController.guessGuiltyCat
 Route.post('/api/scenario/create', 'ScenarioController.createScenario')
 
 // 'ContactController' - Routes
-Route.post('/api/contact/sendMail/:message', 'ContactController.sendMail')
+Route.post('/api/contact/sendMail', 'ContactController.sendMail')
 
 // 'Webhook' - Routes
 Route

@@ -5,7 +5,8 @@ const Mail = use('Mail')
 class ContactController {
 
     * sendMail (request, response) {
-        let msg = request.param('message')
+        let params = request.params
+        let msg = params['message']
         // TODO: check message
 
         yield Mail.raw(msg, message => {
