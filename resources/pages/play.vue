@@ -47,6 +47,7 @@
                     <img :src="'/img/' + accusedCat.img" :alt="accusedCat.name"/>
                 </div>
             </div>
+            <button class="btn filled-pink center-block play-again-btn" @click="playAgain">play again!</button>
         </section>
     </div>
 </template>
@@ -63,55 +64,7 @@
 
         layout: 'chat',
         beforeMount: function() {
-
-            let numberOfCats = Math.round(Math.random() * 3) + 3;
-
-            let cats = Axios.get('/api/cats/random/' + numberOfCats);
-            let rooms = Axios.get('/api/rooms');
-            let owner = Axios.get('/api/person/random');
-            let crime = Axios.get('/api/crime/random');
-            let activities = Axios.get('/api/activities');
-
-            // wait for all, because state must be posted and
-            // stored when everything is set
-            Promise.all([cats, rooms, owner, crime, activities]).then((result) => {
-
-                this.$store.dispatch('setCats', result[0].data);
-                this.$store.dispatch('setRooms', result[1].data);
-                this.$store.dispatch('setOwner', result[2].data);
-                this.$store.dispatch('setCrime', result[3].data);
-
-                const activityArray = result[4].data;
-
-                for(let cat of result[0].data) {
-                    this.catChangesRoom(cat, false)();
-
-                    if(this.$store.state.guiltyCat._id == cat._id) { // cat is guilty
-                        cat.crime_room =  this.$store.state.crime.location;
-                    } else { // cat is not guilty
-                        const randomRoomIndex = Math.floor(Math.random() * this.$store.state.rooms.length);
-                        cat.crime_room =  { // don't reference actual room to prevent circular references
-                            _id: this.$store.state.rooms[randomRoomIndex]._id,
-                            name: this.$store.state.rooms[randomRoomIndex].name,
-                            preposition: this.$store.state.rooms[randomRoomIndex].preposition
-                        }
-                    }
-
-                    const randomActivityIndex = Math.floor(Math.random() * activityArray.length);
-                    cat.crime_activity = activityArray[randomActivityIndex];
-                }
-
-                // commit state to database for AIP.AI Webhook
-                Axios.post('/api/scenario/create', this.$store.state).then(
-                    (result) => {
-                        this.$store.dispatch('setScenarioId', result.data);
-                        this.$store.dispatch('setActivities', activityArray);
-                    }
-                );
-
-            }).catch(function(err){
-                console.error(err);
-            });
+            this.initializeState();
         },
         data: function() {
             return {
@@ -142,6 +95,56 @@
             }
         },
         methods: {
+            initializeState: function() {
+                let numberOfCats = Math.round(Math.random() * 3) + 3;
+
+                let cats = Axios.get('/api/cats/random/' + numberOfCats);
+                let rooms = Axios.get('/api/rooms');
+                let owner = Axios.get('/api/person/random');
+                let crime = Axios.get('/api/crime/random');
+                let activities = Axios.get('/api/activities');
+
+                // wait for all, because state must be posted and
+                // stored when everything is set
+                Promise.all([cats, rooms, owner, crime, activities]).then((result) => {
+
+                    this.$store.dispatch('setCats', result[0].data);
+                    this.$store.dispatch('setRooms', result[1].data);
+                    this.$store.dispatch('setOwner', result[2].data);
+                    this.$store.dispatch('setCrime', result[3].data);
+
+                    const activityArray = result[4].data;
+
+                    for(let cat of result[0].data) {
+                        this.catChangesRoom(cat, false)();
+
+                        if(this.$store.state.guiltyCat._id == cat._id) { // cat is guilty
+                            cat.crime_room =  this.$store.state.crime.location;
+                        } else { // cat is not guilty
+                            const randomRoomIndex = Math.floor(Math.random() * this.$store.state.rooms.length);
+                            cat.crime_room =  { // don't reference actual room to prevent circular references
+                                _id: this.$store.state.rooms[randomRoomIndex]._id,
+                                name: this.$store.state.rooms[randomRoomIndex].name,
+                                preposition: this.$store.state.rooms[randomRoomIndex].preposition
+                            }
+                        }
+
+                        const randomActivityIndex = Math.floor(Math.random() * activityArray.length);
+                        cat.crime_activity = activityArray[randomActivityIndex];
+                    }
+
+                    // commit state to database for AIP.AI Webhook
+                    Axios.post('/api/scenario/create', this.$store.state).then(
+                        (result) => {
+                            this.$store.dispatch('setScenarioId', result.data);
+                            this.$store.dispatch('setActivities', activityArray);
+                        }
+                    );
+
+                }).catch(function(err){
+                    console.error(err);
+                });
+            },
             catChangesRoom: function(cat, updateDB) {
                 return () => {
                     this.$store.dispatch('catChangesRoom', cat);
@@ -186,6 +189,8 @@
                         this.accusedCat = cat;
                         this.gameEnded = true;
                         this.clearTimeouts();
+
+                        this.$store.dispatch('endGame');
                     })
                     .catch((error) => {
                         console.error(error);
@@ -202,6 +207,16 @@
                 }
             },
             clearErrorMsg: function() {
+                this.showErrorMsg = false;
+            },
+            playAgain: function() {
+                this.$store.dispatch('resetGame');
+                this.initializeState();
+
+                this.accusedCatName = '';
+                this.gameEnded = false;
+                this.answer = null;
+                this.accusedCat = null;
                 this.showErrorMsg = false;
             }
         }
@@ -286,6 +301,10 @@
                 bottom: 0;
                 width: 180px;
             }
+        }
+
+        .play-again-btn {
+            margin: 20px auto;
         }
 
         .input {

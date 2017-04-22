@@ -4,7 +4,6 @@ import Vuex from 'vuex';
 const store = new Vuex.Store({
     
     state: {
-        owner: 0,
         allCats: [],
         activeCat: null,
         rooms: [],
@@ -34,15 +33,10 @@ const store = new Vuex.Store({
         setActivities: function(context, activities) {
             context.commit('setActivities', activities);
         },
-        startChat: function(context, cats) {
-            context.commit('removeAvailableCat', cats.new);
-            context.commit('setActiveCat', cats.new);
-            if(cats.current) {
-                context.commit('addAvailableCat', cats.current);
-            }
+        startChat: function(context, cat) {
+            context.commit('setActiveCat', cat);
         },
         endChat: function(context, currentCat) {
-            context.commit('addAvailableCat', currentCat);
             context.commit('setActiveCat');
         },
         sendMessage: function(context, data) {
@@ -73,6 +67,12 @@ const store = new Vuex.Store({
         },
         setScenarioId: function(context, id) {
             context.commit('setScenarioId', id);
+        },
+        endGame: function(context) {
+            context.commit('endGame');
+        },
+        resetGame: function(context) {
+            context.commit('resetState');
         }
     },
     
@@ -172,6 +172,22 @@ const store = new Vuex.Store({
 
             state.crime = crime;
         },
+        endGame: function(state) {
+            state.activeCat = null;
+            state.rooms = [];
+            state.currentRoom = null;
+        },
+        resetState: function(state) {
+            state.allCats = [];
+            state.activeCat = null;
+            state.rooms = [];
+            state.currentRoom = null;
+            state.scenarioId = null;
+            state.crime = null;
+            state.guiltyCat = null;
+            state.owner = null;
+            state.activities = null;
+        }
     }
 });
 
