@@ -15,7 +15,7 @@ class ContactController {
             message.to('purrpurrpurr42@gmail.com')
             message.cc('sarah.sauseng@me.com', 'Sarah Sauseng')
             message.cc('sarahschuetz@gmx.at', 'Sarah Schuetz')
-            message.subject('Contact Form')
+            message.subject(subj)
         })
 
         response.status(200).send('Mail sent.')
