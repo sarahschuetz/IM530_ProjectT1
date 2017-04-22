@@ -51,18 +51,17 @@
         box-sizing: border-box;
         padding-top: 20px;
         display: block;
-        position: fixed;
         top: 0;
         height: 100%;
         z-index: 5;
         text-align: center;
         transition: all .4s ease-in;
 
-        @include responsive-property('padding-right', 0, 0, 100px);
-        @include responsive-property('left', -100%, -100%, auto);
         @include responsive-property('background-color', $pink, $pink, transparent);
-        @include responsive-property('position', fixed, fixed, relative);
-        @include responsive-property('width', 100%, 100%, auto);
+        @include responsive-property('position', fixed, fixed, absolute);
+        @include responsive-property('left', -100%, -100%, auto);
+        @include responsive-property('right', auto, auto, 100px);
+        @include responsive-property('width', 100%, 100%, 380px);
 
         &.open {
             left: 0;
@@ -77,7 +76,7 @@
 
                 @include responsive-property('font-size', 20px, 20px, 16px);
                 @include responsive-property('padding', 20% 0 0, 20% 0 0, 10px 20px);
-                @include responsive-property('float', none, none, right);
+                @include responsive-property('float', none, none, left);
 
                 a {
                     text-decoration: none;
