@@ -76,7 +76,9 @@ class ScenarioController {
             response.send(true)
         }
 
-        response.send(false)
+        if(cat._id != scenario.guilty_cat._id) {
+            response.send(false)
+        }
     }
 
     * deleteScenario (request, response) {
