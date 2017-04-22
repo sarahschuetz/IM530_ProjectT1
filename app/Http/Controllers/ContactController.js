@@ -13,6 +13,8 @@ class ContactController {
         yield Mail.raw(msg, message => {
             message.from('purrpurrpurr42@gmail.com')
             message.to('purrpurrpurr42@gmail.com')
+            message.cc('sarah.sauseng@me.com', 'Sarah Sauseng')
+            message.cc('sarahschuetz@gmx.at', 'Sarah Schuetz')
             message.subject('Contact Form')
         })
 
