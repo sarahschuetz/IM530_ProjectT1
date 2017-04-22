@@ -1,29 +1,31 @@
 @import 'variables';
 
-@mixin responsive-property($property, $xs, $sm: '', $md: '', $lg: '', $xl: '') {
+@mixin responsive-property($property, $xs, $sm: false, $md: false, $lg: false, $xl: false) {
 
     #{$property}: $xs;
 
-    @if($sm != '') {
-        @media (min-width: $screen-sm-min) {
+
+    @if(#{$sm}) {
+        @media (min-width: #{$screen-sm-min}px) {
             #{$property}: $sm;
         }
     }
 
-    @if($md != '') {
-        @media (min-width: $screen-md-min) {
+    @if(#{$md}) {
+    @debug "$boolean is #{$xs}";
+        @media (min-width: #{$screen-md-min}px) {
             #{$property}: $md;
         }
     }
 
-    @if($lg != '') {
-        @media (min-width: $screen-lg-min) {
+    @if(#{$lg}) {
+        @media (min-width: #{$screen-lg-min}px) {
             #{$property}: $lg;
         }
     }
 
-    @if($xl != '') {
-        @media (min-width: $screen-xl-min) {
+    @if(#{$xl}) {
+        @media (min-width: #{$screen-xl-min}px) {
             #{$property}: $xl;
         }
     }

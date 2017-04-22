@@ -6,6 +6,7 @@
 @import 'form';
 @import 'helpers';
 @import 'links';
+@import 'mixins';
 
 html, body {
     width: 100%;
@@ -38,7 +39,7 @@ main {
         .content {
             box-sizing: border-box;
             display: block;
-            width: 750px;
+            @include responsive-property('width', 100%, 375px, 750px);
             padding: 10px;
             margin: 0 auto;
             position: relative;

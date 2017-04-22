@@ -33,9 +33,10 @@
 
     @import '~assets/scss/variables';
     @import '~assets/scss/helpers';
+    @import '~assets/scss/mixins';
 
     .cat {
-        width: 33%;
+        @include responsive-property('width', 100%, 175px, 243px);
         position: relative;
         float: left;
 
@@ -52,7 +53,8 @@
 
         .bar {
             margin-top: 5px;
-            margin-left: 57px;
+            margin-left: 15%;
+            @include responsive-property('margin-left', 30%, 15%, 57px);
         }
 
     }
