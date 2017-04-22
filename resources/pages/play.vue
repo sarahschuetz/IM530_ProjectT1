@@ -77,7 +77,8 @@
                         const randomRoomIndex = Math.floor(Math.random() * this.$store.state.rooms.length);
                         cat.crime_room =  { // don't reference actual room to prevent circular references
                             _id: this.$store.state.rooms[randomRoomIndex]._id,
-                            name: this.$store.state.rooms[randomRoomIndex].name
+                            name: this.$store.state.rooms[randomRoomIndex].name,
+                            preposition: this.$store.state.rooms[randomRoomIndex].preposition
                         }
                     }
 

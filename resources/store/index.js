@@ -166,7 +166,8 @@ const store = new Vuex.Store({
             const roomIndex = Math.floor(Math.random() * state.rooms.length);
             crime.location = { // don't reference actual room to prevent circular references
                 _id: state.rooms[roomIndex]._id,
-                name: state.rooms[roomIndex].name
+                name: state.rooms[roomIndex].name,
+                preposition: state.rooms[roomIndex].preposition
             };
 
             state.crime = crime;
