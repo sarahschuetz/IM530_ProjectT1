@@ -16,7 +16,7 @@ const store = new Vuex.Store({
 
     actions: {
         setCats: function(context, cats) {
-            let randomIndex = Math.floor(Math.random() * cats.length);
+            const randomIndex = Math.floor(Math.random() * cats.length);
             context.commit('setAllCats', cats);
             context.commit('setGuiltyCat', cats[randomIndex]);
         },

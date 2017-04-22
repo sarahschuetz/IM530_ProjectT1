@@ -95,13 +95,13 @@
         },
         methods: {
             initializeState: function() {
-                let numberOfCats = Math.round(Math.random() * 3) + 3;
+                const numberOfCats = Math.round(Math.random() * 3) + 3;
 
-                let cats = Axios.get('/api/cats/random/' + numberOfCats);
-                let rooms = Axios.get('/api/rooms');
-                let owner = Axios.get('/api/person/random');
-                let crime = Axios.get('/api/crime/random');
-                let activities = Axios.get('/api/activities');
+                const cats = Axios.get('/api/cats/random/' + numberOfCats);
+                const rooms = Axios.get('/api/rooms');
+                const owner = Axios.get('/api/person/random');
+                const crime = Axios.get('/api/crime/random');
+                const activities = Axios.get('/api/activities');
 
                 // wait for all, because state must be posted and
                 // stored when everything is set
@@ -152,7 +152,7 @@
                         this.updateRoomsInDB();
                     }
 
-                    let sleepingTime = Math.round(Math.random() * 50 + 10) * 1000;
+                    const sleepingTime = Math.round(Math.random() * 50 + 10) * 1000;
                     setTimeout(this.catChangesRoom(cat, true), sleepingTime);
                 }
             },
@@ -199,7 +199,7 @@
                 }
             },
             clearTimeouts: function() {
-                var id = window.setTimeout(function() {}, 0);
+                let id = window.setTimeout(function() {}, 0);
 
                 while (id--) {
                     window.clearTimeout(id); // will do nothing if no timeout with id is present

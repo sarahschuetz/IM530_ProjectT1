@@ -50,7 +50,11 @@
         methods: {
             sendMessage: function(message) {
                 this.message = '';
-                this.$store.dispatch('sendMessage', {message: message, cat: this.$store.state.activeCat, scenarioId: this.$store.state.scenarioId});
+                this.$store.dispatch('sendMessage', {
+                    message: message,
+                    cat: this.$store.state.activeCat,
+                    scenarioId: this.$store.state.scenarioId
+                });
             },
             scrollToEnd: function() {    
                 this.$nextTick(() => {

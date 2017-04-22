@@ -52,12 +52,12 @@
 
     export default {
         mounted: function() {
-            let ImageMap = require('image-map').ImageMap;
+            const ImageMap = require('image-map').ImageMap;
             ImageMap('img[usemap]');
 
             window.addEventListener('resize', () => {
                 ImageMap('img[usemap]');
-            })
+            });
         },
         methods: {
             changeRoom: function(room) {
