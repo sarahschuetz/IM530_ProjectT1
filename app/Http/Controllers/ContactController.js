@@ -5,14 +5,17 @@ const Mail = use('Mail')
 class ContactController {
 
     * sendMail (request, response) {
-        let params = request.params
+        let params = request.params()
         let msg = params['message']
+        let subj = params['subject']
         // TODO: check message
 
         yield Mail.raw(msg, message => {
-            message.from('sarah.sauseng@gmail.com')
-            message.to('sarah.sauseng@me.com', 'Sarah')
-            message.subject('Contact Form')
+            message.from('purrpurrpurr42@gmail.com')
+            message.to('purrpurrpurr42@gmail.com')
+            message.cc('sarah.sauseng@me.com', 'Sarah Sauseng')
+            message.cc('sarahschuetz@gmx.at', 'Sarah Schuetz')
+            message.subject(subj)
         })
 
         response.status(200).send('Mail sent.')

@@ -5,7 +5,7 @@ let query_constants = {
     'name_const': ['name', 'call you', 'who are you', 'is your name'],
     'actual_room_const': ['room', 'where are you', 'actual location', 'location'],
     'age_const': ['old', 'age'],
-    'crime_const': ['happened'],
+    'crime_const': ['what happened'],
     'crime_room_const': ['room', 'location', 'where were you', 'where have you been'],
     'crime_activity_const': ['did you do', 'have you done', 'were you doing']
 }
