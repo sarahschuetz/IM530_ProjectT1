@@ -15,7 +15,6 @@ class ScenarioController {
 
     * getAll (request, response) {
         let scenarios = yield Scenario.all()
-
         response.json(scenarios)
     }
 
@@ -39,7 +38,6 @@ class ScenarioController {
         scenario.guilty_cat = guilty_cat
         scenario.crime = crime
         scenario.crime_room = crime_room
-
         scenario.person = person
         scenario.all_cats = all_cats
         scenario.room_data = room_data
@@ -76,18 +74,17 @@ class ScenarioController {
 
         if(cat._id == scenario.guilty_cat._id){
             response.send(true)
-        } else {
-            response.send(false)
         }
+
+        response.send(false)
     }
 
     * deleteScenario (request, response) {
         let id = request.param('id')
         let scenario = yield Scenario.findBy('_id', id)
-
         yield scenario.delete()
 
-        response.status(200).send('Deleted.')
+        response.status(200).send(true)
     }
 
 }
