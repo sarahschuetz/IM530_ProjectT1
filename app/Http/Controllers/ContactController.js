@@ -8,11 +8,11 @@ class ContactController {
         let params = request.params()
         let msg = params['message']
         let subj = params['subject']
-        // TODO: check message 
+        // TODO: check message
 
         yield Mail.raw(msg, message => {
             message.from('purrpurrpurr42@gmail.com')
-            message.to('sarah.sauseng@me.com', 'Sarah')
+            message.to('purrpurrpurr42@gmail.com')
             message.subject('Contact Form')
         })
 
