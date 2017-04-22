@@ -35,6 +35,7 @@ const providers = [
   'adonis-lucid-mongodb/providers/DatabaseProvider',
   'adonis-lucid-mongodb/providers/LucidMongoProvider',
   'adonis-lucid-mongodb/providers/FactoryProvider',
+  'adonis-mail-provider/providers/MailProvider'
 ]
 
 /*
@@ -78,6 +79,7 @@ const aliases = {
   Helpers: 'Adonis/Src/Helpers',
   Lucid: 'Adonis/Src/Lucid',
   LucidMongo: 'Adonis/Src/LucidMongo',
+  Mail: 'Adonis/Addons/Mail',
   Middleware: 'Adonis/Src/Middleware',
   Migrations: 'Adonis/Src/Migrations',
   Route: 'Adonis/Src/Route',

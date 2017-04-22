@@ -27,6 +27,7 @@
     "adonis-framework": "^3.0.9",
     "adonis-lucid": "^3.0.13",
     "adonis-lucid-mongodb": "^1.0.32",
+    "adonis-mail-provider": "^2.0.2",
     "adonis-middleware": "^1.0.10",
     "adonis-websocket": "^1.0.2",
     "apiai": "^4.0.1",
