@@ -266,7 +266,6 @@
                     top: calc(50% - #{$imgSize / 2}px);
                     left: 0;
                 }
-            
             }
         }
 

@@ -34,6 +34,17 @@
                 a {
                   text-decoration: none;
                   color: $black;
+
+                  &:hover {
+                      &:not(.nuxt-link-active) {
+                          color: $pink;
+                      }
+                  }
+
+                  &.nuxt-link-active {
+                      padding-bottom: 5px;
+                      border-bottom: 2px solid $pink;
+                  }
                 }
             }
         }
