@@ -5,26 +5,25 @@
     #{$property}: $xs;
 
 
-    @if(#{$sm}) {
+    @if($sm != false) {
         @media (min-width: #{$screen-sm-min}px) {
             #{$property}: $sm;
         }
     }
 
-    @if(#{$md}) {
-    @debug "$boolean is #{$xs}";
+    @if($md != false) {
         @media (min-width: #{$screen-md-min}px) {
             #{$property}: $md;
         }
     }
 
-    @if(#{$lg}) {
+    @if($lg != false) {
         @media (min-width: #{$screen-lg-min}px) {
             #{$property}: $lg;
         }
     }
 
-    @if(#{$xl}) {
+    @if($xl != false) {
         @media (min-width: #{$screen-xl-min}px) {
             #{$property}: $xl;
         }
