@@ -69,6 +69,19 @@
             right: 0;
             cursor: pointer;
         }
+
+        &:disabled {
+            background: lighten($pink, 13%);
+            color: $pink;
+
+            &:hover {
+                cursor: not-allowed;
+
+                &:before {
+                    right: 100%;
+                }
+            }
+        }
     }
 
     &.icon {

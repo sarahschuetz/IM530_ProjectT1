@@ -16,17 +16,25 @@
                         FH Hagenberg
                     </p>
                 </div>
-                <form>
+                <form @submit.prevent="send" v-if="!emailSent">
+                    <div class="text-input">
+                        <label>Your Email:</label>
+                        <input type="email" v-model="email" required/>
+                    </div>
                     <div class="text-input">
                         <label>Subject:</label>
-                        <input/>
+                        <input v-model="subject" required/>
                     </div>
                     <div class="text-input">
                         <label>Message:</label>
-                        <textarea></textarea>
+                        <textarea v-model="message" required></textarea>
                     </div>
-                    <button type="submit" class="btn filled-pink">send</button>
+                    <button :disabled="!validated ? true : false" type="submit" class="btn filled-pink">{{ buttonText }}</button>
                 </form>
+                <div v-else class="mailSent">
+                    Your E-Mail has been sent.<br>
+                    Thank you for your interest.
+                </div>
             </div>
         </section>
     </div>
@@ -35,6 +43,45 @@
 // --------------------------------------------------
 
 <script>
+
+    import Axios from 'axios';
+
+    export default {
+        data: function() {
+            return {
+                subject: '',
+                message: '',
+                email: '',
+                emailSent: false
+            }
+        },
+        computed: {
+            validated: function() {
+                return this.subject != '' && this.message != '' && this.email != '' && this.email.includes('@');
+            },
+            buttonText: function() {
+                return this.validated ? 'send' : 'please fill out all fields';
+            }
+        },
+        methods: {
+            send: function() {
+                Axios.post('/api/contact/sendMail' ,{
+                    subject: this.subject,
+                    message: this.message,
+                    email: this.email
+                })
+                .then((result) => {
+                    this.subject = '';
+                    this.message = '';
+                    this.email = '';
+                    this.emailSent = true;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+            }
+        }
+    }
 
 </script>
 
@@ -100,6 +147,18 @@
             p {
                 margin-top: 0;
             }
+        }
+
+        .mailSent {
+            width: calc(100% - 100px);
+            clear: both;
+            color: $pink;
+            padding: 50px;
+            position: relative;
+            top: 25px;
+            margin-bottom: 50px;
+            border: 2px solid $pink;
+            text-align: center;
         }
     }
 
