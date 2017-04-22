@@ -7,7 +7,7 @@
         </main>
         <chat-bar/>
         <page-footer text="Have fun!"/>
-        <chat-window class="front"/>
+        <chat-window v-if="$store.state.activeCat" class="front"/>
     </div>
 </template>
 

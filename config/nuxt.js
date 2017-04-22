@@ -35,13 +35,8 @@ module.exports = {
   },
 
   build: {
-    vendor: ['axios', 'vue-chat-scroll']
+    vendor: ['axios']
   },
-
-  plugins: [
-    // ssr: false to only include it on client-side
-    { src: '~plugins/vue-chat-scroll.js', ssr: false }
-  ],
   
   /*
   ** Global CSS

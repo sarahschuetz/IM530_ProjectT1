@@ -1,5 +1,5 @@
 <template>
-    <div class="chat-window" v-if="$store.state.activeCat">
+    <div class="chat-window">
         <div class="name-bar" :style="{borderBottom: borderStyle}">
             <cat-icon class="img" :cat="$store.state.activeCat" />
             <div class="text">
@@ -8,7 +8,7 @@
                    v-on:click="$store.dispatch('endChat', $store.state.activeCat)">&#xE5CD;</i>
             </div>
         </div>
-        <div class="messages" v-chat-scroll>
+        <div class="messages">
             <span v-for="message in $store.state.activeCat.messages">
                 <cat-message v-if="message.type == 'cat'" :message="message.text" />
                 <user-message v-if="message.type == 'user'" :message="message.text" />
@@ -30,23 +30,40 @@
     export default {
         data: function() {
            return {
-                message: ''
+                message: '',
+                container: null
            }
+        },
+        mounted: function() {
+            this.container = this.$el.querySelector(".messages");
         },
         components: {
             CatIcon,
             CatMessage,
             UserMessage
         },
+        watch: {
+            messages: function () {
+                this.scrollToEnd();
+            }
+        },
         methods: {
             sendMessage: function(message) {
                 this.message = '';
                 this.$store.dispatch('sendMessage', {message: message, cat: this.$store.state.activeCat, scenarioId: this.$store.state.scenarioId});
-            }
+            },
+            scrollToEnd: function() {    
+                this.$nextTick(() => {
+                    this.container.scrollTop = this.container.scrollHeight;
+                });
+            },
         },
         computed: {
             borderStyle: function() {
                 return 2 + 'px solid ' + this.$store.state.activeCat.color;
+            },
+            messages: function() {
+                return this.$store.state.activeCat.messages;
             }
         }
     }
