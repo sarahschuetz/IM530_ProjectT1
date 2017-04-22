@@ -14,22 +14,37 @@
                 <p>Who could it have been?</p>
             </div>
         </section>
-        <section>
+        <section v-if="!gameEnded">
             <div class="content">
                 <h2 v-if="$store.state.currentRoom != null" class="center-text">{{ location }}</h2>
                 <House/>
             </div>
         </section>
-        <section class="small-margin">
+        <section v-if="!gameEnded" class="small-margin">
             <div class="content">
                 <h2 class="center-text">Who do you think is guilty?</h2>
                 <div class="input center-block">
                     <form @submit.prevent="accuseCat">
-                        <input v-model="accusedCatName"/>
+                        <input v-model.trim="accusedCatName" @input="clearErrorMsg"/>
                         <button type="submit" class="btn filled-pink icon">
                             <i class="material-icons">&#xE163;</i>
                         </button>
+                        <div class="error-msg" v-if="showErrorMsg">You don't have a cat with this name..</div>
                     </form>
+                </div>
+            </div>
+        </section>
+        <section v-else>
+            <div class="content game-over">
+                <div v-if="answer">
+                    <h2>You're totally right!</h2>
+                    <p>No treats for {{ accusedCat.name }} today..</p>
+                    <img :src="'/img/' + accusedCat.img" :alt="accusedCat.name"/>
+                </div>
+                <div v-else>
+                    <h2>{{ accusedCat.name }} is innocent!</h2>
+                    <p>Now the true actor will remain a mystery..</p>
+                    <img :src="'/img/' + accusedCat.img" :alt="accusedCat.name"/>
                 </div>
             </div>
         </section>
@@ -100,7 +115,11 @@
         },
         data: function() {
             return {
-                accusedCatName: ''
+                accusedCatName: '',
+                gameEnded: false,
+                answer: null,
+                accusedCat: null,
+                showErrorMsg: false
             }
         },
         components: {
@@ -157,14 +176,33 @@
                         cat: cat
                     })
                     .then((answer) => {
-                        alert(answer.data);
+                       
+                        if(answer.data) {
+                            this.answer = true;
+                        } else {
+                            this.answer = false;
+                        }
+
+                        this.accusedCat = cat;
+                        this.gameEnded = true;
+                        this.clearTimeouts();
                     })
                     .catch((error) => {
                         console.error(error);
                     });
                 } else {
-                    alert("Cat not available!");
+                    this.showErrorMsg = true;
                 }
+            },
+            clearTimeouts: function() {
+                var id = window.setTimeout(function() {}, 0);
+
+                while (id--) {
+                    window.clearTimeout(id); // will do nothing if no timeout with id is present
+                }
+            },
+            clearErrorMsg: function() {
+                this.showErrorMsg = false;
             }
         }
     }
@@ -228,6 +266,26 @@
                     top: calc(50% - #{$imgSize / 2}px);
                     left: 0;
                 }
+            
+            }
+        }
+
+        .game-over {
+            color: $pink;
+            padding: 25px;
+            padding-left: 50px;
+            position: relative;
+            border: 2px solid $pink;
+
+            p {
+                color: $black;
+            }
+
+            img {
+                position: absolute;
+                right: 20px;
+                bottom: 0;
+                width: 180px;
             }
         }
 
@@ -238,7 +296,12 @@
                 float: left;
                 border-right: none;
             }
-            
+
+            .error-msg {
+                color: $pink;
+                font-size: 16px;
+                margin-top: 10px;
+            }
         }
     }
 
