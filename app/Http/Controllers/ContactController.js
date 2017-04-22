@@ -5,9 +5,10 @@ const Mail = use('Mail')
 class ContactController {
 
     * sendMail (request, response) {
-        let params = request.params
+        let params = request.params()
         let msg = params['message']
-        // TODO: check message
+        let subj = params['subject']
+        // TODO: check message 
 
         yield Mail.raw(msg, message => {
             message.from('purrpurrpurr42@gmail.com')
