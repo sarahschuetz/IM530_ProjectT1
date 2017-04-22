@@ -39,7 +39,7 @@ class WebhookController {
         for (var scenarioRoom of room_data) {
             for (var scenarioCat of scenarioRoom['cats']) {
                 if (scenarioCat._id == cat._id) {
-                    room = scenarioRoom.preposition + ' ' + scenarioRoom.name
+                    room = scenarioRoom.preposition + ' the ' + scenarioRoom.name
                 }
             }
         }
@@ -100,7 +100,7 @@ class WebhookController {
             }
         }
 
-        let speech = 'I was' + activity + '.'
+        let speech = 'I was ' + activity + '.'
 
         response.json({
             speech: speech,
