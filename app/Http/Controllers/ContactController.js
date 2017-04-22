@@ -10,7 +10,7 @@ class ContactController {
         // TODO: check message
 
         yield Mail.raw(msg, message => {
-            message.from('sarah.sauseng@gmail.com')
+            message.from('purrpurrpurr42@gmail.com')
             message.to('sarah.sauseng@me.com', 'Sarah')
             message.subject('Contact Form')
         })
