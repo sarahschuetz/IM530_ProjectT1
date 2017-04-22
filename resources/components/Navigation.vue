@@ -52,7 +52,6 @@
         padding-top: 20px;
         display: block;
         top: 0;
-        height: 100%;
         z-index: 5;
         text-align: center;
         transition: all .4s ease-in;
@@ -62,6 +61,7 @@
         @include responsive-property('left', -100%, -100%, auto);
         @include responsive-property('right', auto, auto, 100px);
         @include responsive-property('width', 100%, 100%, 380px);
+        @include responsive-property('height', 100%, 100%, auto);
 
         &.open {
             left: 0;
