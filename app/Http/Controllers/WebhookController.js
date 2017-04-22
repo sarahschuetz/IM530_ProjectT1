@@ -56,9 +56,9 @@ class WebhookController {
     * get_crime (request, response) {
         let params = request.all()
         let crime = params['originalRequest']['data']['scenario']['crime']['name']
-        let crimeLocation = params['originalRequest']['data']['scenario']['crime_room']['name']
+        let crimeLocation = params['originalRequest']['data']['scenario']['crime_room']
 
-        let speech = 'I think someone ' + crime + ' ' + crimeLocation + '.'
+        let speech = 'I think someone ' + crime + ' ' + crimeLocation.preposition + ' the ' + crimeLocation.name + '.'
 
         response.json({
             speech: speech,
@@ -75,7 +75,7 @@ class WebhookController {
 
         for (var scenarioCat of all_cats) {
             if (scenarioCat._id == cat._id) {
-                room = scenarioCat.crime_room.preposition + ' ' + scenarioCat.crime_room.name
+                room = scenarioCat.crime_room.preposition + ' the ' + scenarioCat.crime_room.name
             }
         }
 
