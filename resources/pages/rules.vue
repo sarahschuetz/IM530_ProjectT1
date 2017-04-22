@@ -7,18 +7,7 @@
 // --------------------------------------------------
 
 <script>
-export default {
-  data: function () {
-    return {
-      name: 'server'
-    }
-  },
-  head () {
-    return {
-      title: `Rules Page (${this.name}-side)`
-    }
-  }
-}
+
 </script>
 
 // --------------------------------------------------

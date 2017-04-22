@@ -58,7 +58,6 @@
 
     import Axios from 'axios';
     import House from '~components/House.vue';
-    import Vuex from 'vuex';
 
     export default {
 
