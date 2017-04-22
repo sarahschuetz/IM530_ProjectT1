@@ -47,17 +47,17 @@ Route.get('/api/activity/:id', 'ActivityController.get')
 // 'ScenarioController' - Routes
 Route.get('/api/scenarios', 'ScenarioController.getAll')
 Route.get('/api/scenario/:id', 'ScenarioController.get')
-Route.post('/api/scenario/create', 'ScenarioController.createScenario')
 Route.put('/api/scenario/:id/updateRooms', 'ScenarioController.updateRooms')
 Route.put('/api/scenario/:id/guessGuiltyCat', 'ScenarioController.guessGuiltyCat')
+Route.post('/api/scenario/create', 'ScenarioController.createScenario')
 
-// 'StatisticController' - Routes
-Route.get('/api/save/:id', 'StatisticController.saveGame')
+// 'ContactController' - Routes
+Route.post('/api/contact/sendMail/:message', 'ContactController.sendMail')
 
 // 'Webhook' - Routes
 Route
     .post('/webhook', 'WebhookController.default_call')
     .middleware('webhook')
 
-
+// 'Nuxt' - Routes
 Route.any('*', 'NuxtController.render')
