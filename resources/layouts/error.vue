@@ -1,39 +1,39 @@
-{{{{raw}}}}
 <template>
-  <section class="container">
-    <img src="../assets/img/logo.png" alt="Nuxt.js Logo" />
-    <h1 class="title">
-      {{ error.statusCode }}
-    </h1>
-    <h2 class="info">
-      {{ error.message }}
-    </h2>
-    <nuxt-link class="button" to="/" v-if="error.statusCode === 404">
-      Homepage
-    </nuxt-link>
-  </section>
+    <section>
+        <div class="content">
+            <h1 class="title center-text">{{ error.statusCode }}</h1>
+            <h2 class="info center-text"> {{ error.message }}</h2>
+        </div>
+        <img class="waffles" src="/img/cats-04.png" alt="Waffles">
+    </section>
 </template>
-{{{{/raw}}}}
+
+// --------------------------------------------------
+
 <script>
-export default {
-  props: ['error']
-}
+
+    export default {
+        props: ['error']
+    }
+
 </script>
 
-<style scoped>
-.title
-{
-  margin-top: 15px;
-  font-size: 5em;
-}
-.info
-{
-  font-weight: 300;
-  color: #9aabb1;
-  margin: 0;
-}
-.button
-{
-  margin-top: 50px;
-}
+// --------------------------------------------------
+
+<style lang="scss" scoped>
+
+    h1 {
+        font-size: 70px;
+        margin-top: 7%;
+        margin-bottom: 0;
+    }
+
+    .waffles {
+        width: 200px;
+        position: absolute;
+        bottom: 120px;
+        left: 50%;
+        margin-left: -100px;
+    }
+
 </style>
