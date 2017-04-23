@@ -79,16 +79,18 @@
 <style lang="scss" scoped>
 
     @import '~assets/scss/variables';
+    @import '~assets/scss/mixins';
 
     .chat-window {
-        width: 275px;
-        height: 320px;
+        @include responsive-property('width', 100%, 100%, 275px);
+        @include responsive-property('height', 100%, 100%, 320px);
+
         float: right;
         background-color: $white;
-        margin-right: 20px;
+        @include responsive-property('margin-right', 0, 0, 20px);
         position: fixed;
         bottom: 0;
-        right: 100px;
+        @include responsive-property('right', 0, 0, 100px);
         box-shadow: 0px 0px 20px $grey-shadow;
 
         .name-bar {
@@ -127,7 +129,7 @@
 
         .messages {
             box-sizing: border-box;
-            height: 251px;
+            @include responsive-property('height', calc(100% - 69px), calc(100% - 69px), 251px);
             width: 100%;
             position: absolute;
             overflow-y: scroll;

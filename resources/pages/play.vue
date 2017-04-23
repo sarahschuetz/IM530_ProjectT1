@@ -1,16 +1,25 @@
 <template>
-    <div>
+    <div v-if="initialized">
         <section>
             <div class="content">
-                <h1>Welcome home, Sarah S.!</h1>
-                <p>You are a student at FH Hagenberg.</p>
+                <h1>Welcome home!</h1>
+                <p>{{ $store.state.owner.name }} ({{ $store.state.owner.age }}) is the owner of {{ $store.state.allCats.length }} cats:</p>
+                <div class="cats">
+
+                </div>
+                <p>Imagine you are {{ $store.state.owner.name }}.<br>
+                You come home from a long day at work.<br>
+                You reach into your pocket to get your keys.<br>
+                "Miaow, miaow .." is coming out of your appartment.<br>
+                They seem to be hungry. They always are.<br>
+                You turn the key in the lock and enter your appartment.</p>
             </div>
         </section>
         <section class="section-pink">
             <div class="content">
                 <img src="~static/img/cats-XX.png" alt="mystery cat" />
                 <h2>Oh no! Look what happend!?</h2>
-                <p>One of the cats peed on the carpet in the livingroom.</p>
+                <p>One of the cats {{ $store.state.crime.name }} {{ $store.state.crime.location.preposition }} the {{ $store.state.crime.location.name }}.</p>
                 <p>Who could it have been?</p>
             </div>
         </section>
@@ -71,7 +80,8 @@
                 gameEnded: false,
                 answer: null,
                 accusedCat: null,
-                showErrorMsg: false
+                showErrorMsg: false,
+                initialized: false
             }
         },
         components: {
@@ -137,6 +147,7 @@
                         (result) => {
                             this.$store.dispatch('setScenarioId', result.data);
                             this.$store.dispatch('setActivities', activityArray);
+                            this.initialized = true;
                         }
                     );
 
@@ -228,6 +239,7 @@
 <style lang="scss" scoped>
 
     @import '~assets/scss/variables';
+    @import '~assets/scss/mixins';
     
     section {
         
@@ -236,7 +248,7 @@
         }
 
         h2 {
-            font-size: 24px;
+            @include responsive-property('font-size', 23px, 24px, 24px);
         }
 
         &.small-margin {
@@ -269,14 +281,18 @@
             }
 
             .content {
-                padding-left: 270px;
+                @include responsive-property('padding-left', 20px, 20px, 270px);
+                @include responsive-property('padding-right', 20px, 20px, inherit);
                 min-height: 260px;
 
                 img {
                     $imgSize: 200;
 
+                    margin: 0 auto;
+                    display: block;
+
                     height: #{$imgSize}px;
-                    position: absolute;
+                    @include responsive-property('position', static, static, absolute);
                     top: calc(50% - #{$imgSize / 2}px);
                     left: 0;
                 }
