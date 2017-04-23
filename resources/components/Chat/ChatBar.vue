@@ -40,12 +40,14 @@
         top: 0;
         right: 0;
         padding-top: 120px;
+        pointer-events: none;
         
         logo {
             position: absolute;
         }
 
         .icon {
+            pointer-events: auto;
             margin-bottom: 10px;
             margin-left: 25px;
             cursor: pointer;
