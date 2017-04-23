@@ -112,9 +112,6 @@ class WebhookController {
     * get_age (request, response) {
         let params = request.all()
         let age = params['originalRequest']['data']['cat']['age']
-        let answers = []
-        answers.append( 'I am ' + age + ' years old.')
-        answers.append( age + ' long years.')
 
         let speech = 'I am ' + age + ' years old.'
 
