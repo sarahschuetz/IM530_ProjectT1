@@ -3,12 +3,12 @@
         <section>
             <div class="content">
                 <h1>Welcome home!</h1>
-                <p>{{ $store.state.owner.name }} ({{ $store.state.owner.age }}) is the owner of {{ $store.state.allCats.length }} cats:</p>
+                <p>{{ $store.state.owner.name }} is {{ $store.state.owner.age }} years old, {{ $store.state.owner.profession }} and the owner of {{ $store.state.allCats.length }} cats:</p>
                 <div class="cats">
 
                 </div>
                 <p>Imagine you are {{ $store.state.owner.name }}.<br>
-                You come home from a long day at work.<br>
+                You come home from {{ $store.state.owner.activity }}.<br>
                 You reach into your pocket to get your keys.<br>
                 "Miaow, miaow .." is coming out of your appartment.<br>
                 They seem to be hungry. They always are.<br>
