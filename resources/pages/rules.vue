@@ -30,6 +30,14 @@
             <p>Possible questions for the cat are for example:</p>
             <p>What is your name?<br>
             Where are you?<br>
+            What is your location?<br>
+            How old are you?<br>
+            What is your age?<br>
+            Where have you been at crime time?<br>
+            What were you doing?<br>
+            What did you do?<br>
+            What has happened?<br>
+            What went wrong?
             </p>
 
             <p>Be aware, they might not always tell the truth to cover their tracks.</p>

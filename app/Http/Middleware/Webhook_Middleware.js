@@ -3,7 +3,7 @@
 let WebhookController = use('App/Http/Controllers/WebhookController.js')
 let query_constants = {
     'name_const': ['name', 'call you', 'who are you', 'is your name'],
-    'actual_room_const': ['in which room are you', 'where are you', 'actual location', 'what is your location'],
+    'actual_room_const': ['in which room are you', 'where are you', 'actual location', 'what is your location', 'current'],
     'age_const': ['old', 'age'],
     'crime_const': ['what happened', 'what went wrong'],
     'crime_room_const': ['in which room were you', 'what was your location', 'where were you', 'where have you been'],
