@@ -27,6 +27,11 @@
             That a cat is available is visualized by displaying an icon with their face below the logo.
             You can click on it to start interacting with the cat.</p>
 
+            <p>Possible questions for the cat are for example:</p>
+            <p>What is your name?<br>
+            Where are you?<br>
+            </p>
+
             <nuxt-link to="/play">
                 <button class="center-block btn filled-pink">Play</button>
             </nuxt-link>
