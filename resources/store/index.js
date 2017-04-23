@@ -116,6 +116,8 @@ const store = new Vuex.Store({
             if(roomIndex > -1) {
                 state.currentRoom = state.rooms[roomIndex];
             }
+
+            state.activeCat = null;
         },
         setActivities: function(state, activities) {
             state.activities = activities;
