@@ -3,7 +3,7 @@
         <section>
             <div class="content">
                 <h1>Welcome home!</h1>
-                <p>{{ $store.state.owner.name }} is {{ $store.state.owner.age }} years old, {{ $store.state.owner.profession }} and the owner of {{ $store.state.allCats.length }} cats:</p>
+                <p>{{ $store.state.owner.name }} is {{ $store.state.owner.age }} years old, {{ $store.state.owner.profession }} and the owner of {{ $store.state.allCats.length }} cats.</p>
                 <div class="cats">
 
                 </div>
