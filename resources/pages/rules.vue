@@ -32,6 +32,8 @@
             Where are you?<br>
             </p>
 
+            <p>Be aware, they might not always tell the truth to cover their tracks.</p>
+
             <nuxt-link to="/play">
                 <button class="center-block btn filled-pink">Play</button>
             </nuxt-link>
