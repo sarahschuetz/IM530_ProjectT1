@@ -1,5 +1,5 @@
 <template>
-    <div class="cat-icon"
+    <div :class="classes"
          @click="$store.dispatch('startChat', cat)"
          :style="styling"></div>
     </div>
@@ -19,6 +19,13 @@
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: '5px 8px'
+                }
+            },
+            classes: function() {
+                if(this.$store.state.activeCat && this.cat._id == this.$store.state.activeCat._id) {
+                    return 'cat-icon active';
+                } else {
+                    return 'cat-icon';
                 }
             }
         }

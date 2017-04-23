@@ -50,6 +50,10 @@
             margin-left: 25px;
             cursor: pointer;
         }
+
+        .active {
+            opacity: 0.5;
+        }
     }
 
 
