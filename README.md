@@ -17,6 +17,8 @@ A working version can be found [here](https://purr-purr-purr.herokuapp.com/).
 
 The project is set up using **AdonisJs**, **Nuxt** and **Vue.js**.
 
+The Node version used is 7.2.0 like stated in the `package.json` file.
+
 The basic folder structure is given by Adonis. All vue components as well as images and styles life in the `resources` folder. The vue components are stored in the folder `components`. Styles and images are in the folder `assets`.
 
 We are also using **Vuex**. The store file can be found at `components/store/index.js`.
