@@ -83,7 +83,6 @@
                     display: inline-block;
                     width: 20px;
                     height: 10px;
-                    background-color: #f00;
                     margin-right: 10px;
                 }
             }

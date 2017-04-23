@@ -3790,9 +3790,9 @@ ignore@^3.0.9, ignore@^3.2.0:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.2.7.tgz#4810ca5f1d8eca5595213a34b94f2eb4ed926bbd"
 
-image-map@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/image-map/-/image-map-1.0.4.tgz#96d42d52ba8dd4d762f069a63efa9094d9f17913"
+image-map@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/image-map/-/image-map-1.0.3.tgz#921557d53f8fd75028f9054301732d6c5075075a"
   dependencies:
     jquery "^3.1.0"
 
@@ -4159,7 +4159,7 @@ joi@^6.10.1:
     moment "2.x.x"
     topo "1.x.x"
 
-jquery@^3.1.0:
+jquery, jquery@^3.1.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 

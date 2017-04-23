@@ -328,6 +328,11 @@
             input {
                 float: left;
                 border-right: none;
+                width: 209px;
+            }
+
+            button {
+                margin: 0;
             }
 
             .error-msg {
